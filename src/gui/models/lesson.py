@@ -8,3 +8,10 @@ class Lesson(MPTTModel):
 
     def __str__(self):
         return (str(self.parent) + " » " if self.parent is not None else "") + self.title
+
+class FeedbackLesson(models.Model):
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    feedback = models.BooleanField(name="Get Feedback")
+
+    def __str__(self):
+        return (str(self.lesson.parent.title) + " » " if self.lesson.title is not None else "") + self.lesson.title

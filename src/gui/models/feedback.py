@@ -2,9 +2,11 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 from .course import CourseLesson
+from .lesson import FeedbackLesson
 
 class CourseLessonFeedback(models.Model):
     course = models.ForeignKey(CourseLesson, on_delete=models.CASCADE)
+    feedbacklesson = models.ForeignKey(FeedbackLesson, on_delete=models.CASCADE)
     date = models.DateTimeField('feedback date')
     positive = models.IntegerField(validators=[
             MaxValueValidator(100),
