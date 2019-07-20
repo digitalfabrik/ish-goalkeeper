@@ -4,15 +4,17 @@ from .lesson import Lesson
 import datetime
 
 class Course(models.Model):
-    title = models.TextField(max_length=500, blank=True)
-    location = models.TextField(max_length=500, blank=True)
-    start_date = models.DateField('start date')
-    end_date = models.DateField('end date', blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    dates = models.TextField(max_length=500, blank=True)
+    title = models.TextField('Kurstitel', max_length=500, blank=False)
+    location = models.TextField('Ort', max_length=500, blank=False)
+    active = models.BooleanField('Aktiv', blank=True)
+    dates = models.TextField('Kurszeit', max_length=500, blank=True)
 
     def __str__(self):
         return self.title + " (" + self.location + ") " + " - " + str(self.user)
+
+    class Meta:
+        verbose_name = 'Kurs'
+        verbose_name_plural = 'Kurse'
 
 class CourseLesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -20,3 +22,18 @@ class CourseLesson(models.Model):
 
     def __str__(self):
         return self.course.title + " » " + self.lesson.title
+
+    class Meta:
+        verbose_name = 'Kurslektion'
+        verbose_name_plural = 'Kurslektionen'
+
+class CourseUsers(models.Model):
+    user = models.ForeignKey(Course, on_delete=models.CASCADE, blank=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
+
+    def __str__(self):
+        return self.course.title + " &mdash; " + self.user
+
+    class Meta:
+        verbose_name = 'Kurs-Benutzer-Zuteilung'
+        verbose_name_plural = 'Kurs-Benutzer-Zuteilungen'
