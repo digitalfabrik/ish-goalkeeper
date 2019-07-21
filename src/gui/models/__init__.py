@@ -3,5 +3,5 @@ from .profile import Profile
 from .news import News
 from .course import Course, CourseLesson, CourseUsers
 from .profile import Profile
-from .lesson import Lesson, FeedbackLesson, LessonMeta, LessonMetaData
+from .lesson import Lesson, FeedbackLesson, LessonMeta, LessonMetaData, File, Attachment
 from .feedback import CourseLessonFeedback
