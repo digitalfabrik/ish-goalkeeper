@@ -1,5 +1,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+from filer.fields.file import FilerFileField
 
 class Lesson(MPTTModel):
     title = models.TextField(max_length=500, blank=False)
@@ -47,3 +48,26 @@ class LessonMetaData(models.Model):
     class Meta:
         verbose_name = 'Lektionsmetainformation'
         verbose_name_plural = 'Lektionsmetainformationen'
+
+class File(models.Model):
+    description = models.TextField('Beschreibung', max_length=150)
+    logo = FilerFileField(related_name='Anhang', null=True, blank=True, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Datei'
+        verbose_name_plural = 'Dateien'
+
+    def __str__(self):
+        return self.description
+
+
+class Attachment(models.Model):
+    file = models.ForeignKey(File, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Anhang'
+        verbose_name_plural = 'Anhänge'
+
+    def __str__(self):
+        return self.file.description + " | " + self.lesson.title
