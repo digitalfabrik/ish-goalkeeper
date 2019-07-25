@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<form action="/login/" method="post">
+  <div class="">
+    {% csrf_token %}
+    <div>
+      <img src="{% static "images/ish.svg" %}" class="logo-main">
+    </div>
+    <div class="headline">
+      Bunter Ball
+    </div>
+    <div >
+      <input type="text" name="user" class="input-icon input-icon-user" placeholder="Benutzername">
+    </div>
+    <div>
+      <input type="password" name="password" class="input-icon input-icon-pw" placeholder="Passwort">
+    </div>
+    <div>
+      <input type="submit" value="Anmelden">
+    </div>
+    <div class="headline">
+      <img src="{% static "heroicons/icon-mail.svg" %}">
+    </div>
+    <div>
+      Du hast noch keinen Account oder dein Passwort vergessen? Wende dich bitte an <a href="mailto:bunterball@insafehands.de">bunterball@insafehands.de</a>.
+    </div>
+  </div>
+</form>
+{% endblock %}

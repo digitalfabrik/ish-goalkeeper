@@ -1,0 +1,65 @@
+body {
+  background: #fff;
+  font-family: 'Roboto Slab', serif !important;
+}
+
+.content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input {
+  border: 0;
+  font-size: 2em;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+input[type=text], input[type=password] {
+  border-bottom: 1px solid #ed7000;
+}
+
+input, textarea, select { font-family:inherit; }
+
+input[type=submit] {
+  height: 2em;
+}
+
+.headline {
+  color: #ed7000;
+  font-size: 3em;
+  text-align: center;
+}
+
+.input-icon {
+  padding-left: 30px;
+  /*  max-width: 100%; */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.input-icon-user {
+  background: white url(heroicons/icon-user.svg) left no-repeat;
+}
+
+.input-icon-pw {
+  background: white url(heroicons/icon-lock-closed.svg) left no-repeat;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(https://fonts.gstatic.com/s/robotoslab/v9/BngMUXZYTXPIvIBgJJSb6ufN5qA.ttf) format('truetype');
+}
+
+.logo-main {
+  width: 40%;
+  margin: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
