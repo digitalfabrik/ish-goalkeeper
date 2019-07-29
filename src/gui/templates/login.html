@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<form action="/login/" method="post">
+<form action="login/" method="post">
   <div class="">
     {% csrf_token %}
     <div>
@@ -11,7 +11,7 @@
       Bunter Ball
     </div>
     <div >
-      <input type="text" name="user" class="input-icon input-icon-user" placeholder="Benutzername">
+      <input type="text" name="username" class="input-icon input-icon-user" placeholder="Benutzername">
     </div>
     <div>
       <input type="password" name="password" class="input-icon input-icon-pw" placeholder="Passwort">
