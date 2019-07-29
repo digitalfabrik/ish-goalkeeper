@@ -1,8 +1,8 @@
 from django.urls import path
-from django.http import HttpResponseRedirect
 from . import views
 
 urlpatterns = [
-    path('', lambda r: HttpResponseRedirect('login/')),
-    path('login/', views.login_user, name='login_user')
+    path('', views.login_screen, name="login_screen"),
+    path('login/', views.login_user, name='login_user'),
+    path('news/', views.show_news, name="news"),
 ]
