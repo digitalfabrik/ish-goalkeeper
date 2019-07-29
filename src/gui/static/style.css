@@ -26,10 +26,18 @@ input[type=submit] {
   height: 2em;
 }
 
-.headline {
+h1 {
   color: #ed7000;
   font-size: 3em;
   text-align: center;
+  margin-top: 1em;
+}
+
+h2 {
+  font-size: 1.5em;
+  text-align: center;
+  width: 100%;
+  margin-top: 0.5em;
 }
 
 .input-icon {
@@ -58,8 +66,33 @@ input[type=submit] {
 
 .logo-main {
   width: 40%;
-  margin: 2em;
+  margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+.content-item {
+  background: #eee;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+.news-title {
+  font-weight: bold;
+}
+
+.news-text {
+
+}
+
+.news-date {
+  text-align: right;
+  color: #555;
+}
+
+.news-icon {
+  float: right;
+  margin: 0.5em;
 }
