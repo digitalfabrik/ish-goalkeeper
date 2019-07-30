@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+      <h2>Kontakt</h2>
+{% if sent %}
+      <div class="content-item">
+        <p>Nachricht erfolgreich versandt.</p>
+      </div>
+{% endif %}
+      <div class="content-item centered">
+        <p>Nimm Kontakt zum Team auf. Die Rückmeldung erhältst du per E-Mail.</p>
+        <p>Alternativ kannst du auch eine E-Mail an <a href="mailto:bunterball@insafehands.de">bunterball@insafehands.de</a> schreiben.
+      </div>
+      <div class="centered">
+        <form method="post" action="/gui/send_contact/">
+          {% csrf_token %}
+          <textarea style="margin:auto; width: 95%; height: 40vh; resize:none;" name="message"></textarea>
+          <input type="submit" style="border-color: #ed7000; border-sytle:outset;" value="Senden">
+        </form>
+      </div>
+{% endblock %}

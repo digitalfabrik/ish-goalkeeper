@@ -7,4 +7,6 @@ urlpatterns = [
     path('news/', views.show_news, name="news"),
     path('logout/', views.logout_user, name="logout_user"),
     path('privacy/', views.privacy_statement, name="privacy_statement"),
+    path('contact/', views.contact_form, name="contact_form"),
+    path('send_contact/', views.send_contact_form, name="send_contact_form"),
 ]
