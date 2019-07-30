@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h2>Neuigkeiten</h2>
+      <h2>Neuigkeiten</h2>
 {% if news_list %}
   {% for news_item in news_list %}
-    <div class="content-item">
-      <img class="news-icon" src="{% static "heroicons/icon-news.svg" %}">
-      <p class="news-title">{{ news_item.title }}</p>
-      <hr style="border-color: #ed7000;" noshade="1">
-      <p>{{ news_item.text }}</p>
-      <p class="news-date">{{ news_item.pub_date }}</p>
-    </div>
+      <div class="content-item">
+        <img class="news-icon" src="{% static "images/ish.svg" %}">
+        <p class="news-title">{{ news_item.title }}</p>
+        <hr noshade>
+        <p>{{ news_item.text }}</p>
+        <p class="news-date">{{ news_item.pub_date }}</p>
+      </div>
   {% endfor %}
 {% else %}
-    <div class="news-item">Keine Neuigkeiten.</div>
+      <div class="news-item">Keine Neuigkeiten.</div>
 {% endif %}
 {% endblock %}

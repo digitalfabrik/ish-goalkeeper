@@ -1,0 +1,26 @@
+{% load static %}
+    <nav role="navigation">
+      <div id="menu-container">
+        <!--<div style="position:absolute;"><img style="width: 35px;" src="{% static "heroicons/icon-menu.svg" %}"></div>-->
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <div id="menu">
+          <div class="centered ish-bg menu-padding">
+            <img class="centered portrait" src="{% static "images/ish.svg" %}">
+          </div>
+          <div class="centered ish-bg">
+            Coach: User
+          </div>
+          <ul>
+            <li><a href="/gui/news">Neuigkeiten</a></li>
+            <li><a href="/gui/courses">Meine Kurse</a></li>
+            <li><a href="/gui/contact">Kontakt</a></li>
+            <li><a href="/gui/profile">Profil und Einstellungen</a></li>
+            <li><a href="/gui/privacy">Datenschutz</a></li>
+            <li><a href="/gui/logout">Abmelden</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>

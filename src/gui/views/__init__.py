@@ -1,4 +1,4 @@
-from .login_user import login_user, login_screen
+from .login_user import login_user, login_screen, logout_user
 from .news import show_news
 from django.shortcuts import render
 from django.http import HttpResponse
