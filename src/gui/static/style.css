@@ -83,6 +83,7 @@ hr {
   margin-top: 1em;
   margin-bottom: 1em;
   padding: 0.5em;
+  z-index: 10;
 }
 
 .news-title {
@@ -124,7 +125,7 @@ hr {
   left: 0px;
   cursor: pointer;
   opacity: 0;
-  z-index: 2;
+  z-index: 2001;
   -webkit-touch-callout: none;
 }
 
@@ -133,12 +134,12 @@ hr {
   display: block;
   width: 33px;
   height: 4px;
-  left: 5px;
+  left: 10px;
   margin-bottom: 5px;
   position: relative;
   background: #cdcdcd;
   border-radius: 3px;
-  z-index: 1;
+  z-index: 2000;
   transform-origin: 4px 0px;
   transition: transform 0.3s cubic-bezier(0.77,0.2,0.05,1.0),
               background 0.3s cubic-bezier(0.77,0.2,0.05,1.0),
@@ -182,6 +183,16 @@ hr {
   top: 0;
   background: #aaa;
   height: 100vh;
+  z-index: -1000;
+  display: none;
+}
+
+#menu-container input:checked ~ div
+{
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s;
+  z-index: 1000;
 }
 
 #menu ul {
@@ -209,12 +220,6 @@ hr {
 #menu a:link, #menu a:visited, #menu a:active {
   color: #222;
   text-decoration: none;
-}
-
-#menu-container input:checked ~ div
-{
-  opacity: 1;
-  transition: opacity 0.3s;
 }
 
 .portrait {
