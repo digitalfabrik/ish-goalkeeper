@@ -11,6 +11,7 @@ def show_news(request):
     """
     Show latest 5 news entries.
     """
-    news_list = News.objects.all()  # pylint: disable=E1101
+    # pylint: disable=E1101
+    news_list = News.objects.all().order_by("-pub_date")[0:5]
     context = {'news_list': news_list}
     return render(request, 'news.html', context)
