@@ -8,7 +8,10 @@
   </head>
   <body>
     <div class="content">
-{% block content %}{% endblock %}
+      {% if user.is_authenticated %}
+        {% include "menu.html" %}
+      {% endif %}
+      {% block content %}{% endblock %}
     </div>
   </body>
 </html>
