@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+      <h2>Datenschutzerklärung</h2>
+      <div class="content-item">
+        <p>Folgende Informationen werden auf dem Server gespeichert:</p>
+        <ul>
+          <li>Der Zeitpunkt, zu dem das Konto angelegt wurde.</li>
+          <li>Der Zeitpunkt des letzten erfolgreichen Logins.</li>
+          <li>Dein Name</li>
+          <li>Deine E-Mail-Adresse</li>
+          <li>Dein Passwort (verschlüsselt, als Hash)</li>
+        </ul>
+        <p>Folgende Informationen werden als Cookie in deinem Browser gespeichert:</p>
+        <ul>
+          <li>Ein Cookie mit einer Session-ID, solange du anmgeledet bist.</li>
+        </ul>
+      </div>
+{% endblock %}
