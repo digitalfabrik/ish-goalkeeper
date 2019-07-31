@@ -3,17 +3,26 @@
 {% block content %}
       <h2>Datenschutzerklärung</h2>
       <div class="content-item">
-        <p>Folgende Informationen werden auf dem Server gespeichert:</p>
+        <p>Folgende Informationen über dich werden auf dem Server gespeichert:</p>
         <ul>
           <li>Der Zeitpunkt, zu dem das Konto angelegt wurde.</li>
           <li>Der Zeitpunkt des letzten erfolgreichen Logins.</li>
-          <li>Dein Name</li>
-          <li>Deine E-Mail-Adresse</li>
-          <li>Dein Passwort (verschlüsselt, als Hash)</li>
+          <li>Dein Vor- und Nachname.</li>
+          <li>Deine E-Mail-Adresse.</li>
+          <li>Dein Wohnort.</li>
+          <li>Dein Passwort, <a href="https://de.wikipedia.org/wiki/Salt_(Kryptologie)">gesalzen</a> und verschlüsselt mit <a href="https://de.wikipedia.org/wiki/PBKDF2">PBKDF2</a>.</li>
+          <li>Die Kurse, die du betreust und betreut hast.</li>
+          <li>Eine <a href="https://de.wikipedia.org/wiki/Sitzungsbezeichner">Session-ID</a> mit der du als angemeldeter Nutzer identifiziert wirst.</li>
         </ul>
         <p>Folgende Informationen werden als Cookie in deinem Browser gespeichert:</p>
         <ul>
-          <li>Ein Cookie mit einer Session-ID, solange du anmgeledet bist.</li>
+          <li>Eine <a href="https://de.wikipedia.org/wiki/Sitzungsbezeichner">Session-ID</a> solange du anmgeledet bist.</li>
         </ul>
+        <p>
+          Diese Informationen werden selbstverständlich nicht an Dritte weitergegeben.
+        </p>
+        <p>
+          Um alle deine Daten löschen zu lassen, schreibe eine E-Mail an <a href="mailto:bunterball@insafehands.de">bunterball@insafehands.de</a> oder eine Nachricht über das <a href="/gui/contact">Kontaktformular</a>.
+        </p>
       </div>
 {% endblock %}
