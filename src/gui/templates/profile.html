@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h2>Profil-Einstellungen</h2>
+<form method="post">
+  {% csrf_token %}
+  <div class="content-item">
+    <h2>Passwort ändern</h2>
+    {{ pw_form }}
+  </div>
+  <input type="submit" value="Passwort speichern">
+</form>
+<form method="post">
+  {% csrf_token %}
+  <div class="content-item">
+    <h2>E-Mail-Adresse ändern</h2>
+    Deine aktuelle E-Mail-Adresse ist {{ request.user.email }}. Falls du sie ändern möchtest, gib hier eine neue Adresse ein:
+    <input type="text" name="email">
+  </div>
+  <input type="submit" value="E-Mail speichern">
+</form>
+{% endblock %}
