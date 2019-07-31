@@ -9,6 +9,8 @@ def profile_processor(request):
     """
     Get user information for menu.
     """
+    if not request.user.is_authenticated:
+        return {'user_info': {'location': '', 'name': '', 'courses': ''}}
     user_info = {}
     # pylint: disable=E1101
     profile = Profile.objects.filter(user=request.user)
