@@ -181,7 +181,7 @@ hr {
   opacity: 0;
   transition: opacity 0.3s;
   top: 0;
-  background: #aaa;
+  background: #ddd;
   height: 100vh;
   z-index: -1000;
   display: none;
