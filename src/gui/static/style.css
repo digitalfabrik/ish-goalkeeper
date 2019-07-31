@@ -208,13 +208,9 @@ hr {
   font-size: 1.3em;
 }
 
-#menu div {
-  width: 100%;
-}
-
-.menu-padding {
-  padding-top: 50px;
-  padding-bottom: 50px;
+#menu h3 {
+  padding: 5px;
+  margin: 0px;
 }
 
 #menu a:link, #menu a:visited, #menu a:active {
@@ -225,7 +221,6 @@ hr {
 .portrait {
   background: #fff;
   border-radius: 50%;
-/*  margin: 50px; */
   width: 40%;
 }
 
@@ -238,4 +233,24 @@ hr {
 
 .ish-bg {
   background: #ed7000;
+}
+
+.full-menu {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow:auto;
+}
+
+.full-menu-placeholder {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  overflow:auto;
+}
+.half-menu {
+  width: 50%;
+  float: left;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
