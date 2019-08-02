@@ -1,7 +1,5 @@
-from .profile import Profile
-
 from .news import News
-from .course import Course, CourseLesson, CourseUsers
+from .course import Course, CourseLesson, CourseUser
 from .profile import Profile
-from .lesson import Lesson, FeedbackLesson, LessonMeta, LessonMetaData, File, Attachment
-from .feedback import CourseLessonFeedback
+from .lesson import Lesson, LessonMeta, LessonMetaData, Attachment
+from .feedback import Feedback
