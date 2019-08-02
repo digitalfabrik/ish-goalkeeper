@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+      <h2>Meine Kurse</h2>
+{% if course_list %}
+  {% for course in course_list %}
+    <a href="/gui/course/{{ course.id }}" class="div-link">
+      <div class="content-item">
+        <div class="centered course-large-style-box">
+        <div class="ish-bg course-style-box"></div>
+        </div>
+        <div class="course-details-box">
+        <h3>{{ course.title }}</h3>
+        <img style="height: 1em;" src="{% static "heroicons/icon-location.svg" %}"> {{ course.location }} | {{ course.dates }}
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+{% endif %}
+{% endblock %}

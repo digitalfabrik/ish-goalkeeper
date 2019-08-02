@@ -1,4 +1,11 @@
 {% load static %}
+{% if back_link %}
+    <div style="margin-top: 10px;">
+      <a class="div-link" href="{{ back_link }}">
+        <img class="chevron-back" src="{% static "heroicons/icon-cheveron-left.svg" %}">
+      </a>
+    </div>
+{% else %}
     <nav role="navigation">
       <div id="menu-container">
         <!--<div style="position:absolute;"><img style="width: 35px;" src="{% static "heroicons/icon-menu.svg" %}"></div>-->
@@ -36,3 +43,4 @@
         </div>
       </div>
     </nav>
+{% endif %}
