@@ -4,7 +4,6 @@ Models related to Lessons
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey  # pylint: disable=E0401
 from filer.fields.file import FilerFileField  # pylint: disable=E0401
-from .feedback import Feedback
 
 
 class Lesson(MPTTModel):  # pylint: disable=R0903
@@ -25,21 +24,6 @@ class Lesson(MPTTModel):  # pylint: disable=R0903
     def __str__(self):
         return ((str(self.parent) + " » " if self.parent is not None else "")
                 + self.title)
-
-    def needs_feedback(self, course_id):
-        """
-        Does this lesson or any of its descendants need
-        feedback?
-        """
-        descendants = self.get_descendants(include_self=True)
-        for descendant in descendants:
-            if descendant.feedback_required:
-                # pylint: disable=E1101
-                feedback = Feedback.objects.get(lesson=descendant.id,
-                                                course=course_id)
-                if not feedback:
-                    return True
-        return False
 
     # pylint: disable=R0903
     class Meta:

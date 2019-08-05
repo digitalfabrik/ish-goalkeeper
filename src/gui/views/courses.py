@@ -4,7 +4,7 @@ View for courses of users.
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from ..models import CourseUser, Course, CourseLesson, Lesson
+from ..models import CourseUser, Course, CourseLesson, Lesson, Feedback
 
 
 @login_required
@@ -27,20 +27,93 @@ def course_details(request, course_id=None):
     context = {}
     # pylint: disable=E1101
     course_detail = Course.objects.get(id=course_id)
-    lesson_list = (CourseLesson.objects.filter(course=course_id)
-                   .values_list('lesson', flat=True))
-    if len(lesson_list) == 1:
-        lesson_list = Lesson.objects.get(id=lesson_list[0]).get_children()
-    else:
-        lesson_list = Lesson.objects.filter(id__in=lesson_list)
     course_user_list = (CourseUser.objects.filter(course=course_id)
                         .values_list('user', flat=True))
     user_list = User.objects.filter(id__in=course_user_list)
+    lesson_list = get_lessons(course_id)
     context = {'course': course_detail,
                'lesson_list': lesson_list,
                'user_list': user_list,
                'back_link': "/gui/courses/"}
     return render(request, 'course.html', context)
+
+
+def needs_feedback(lesson, course_id):
+    """
+    Does this lesson or any of its descendants need
+    feedback?
+    """
+    descendants = lesson.get_descendants(include_self=True)
+    for descendant in descendants:
+        if descendant.feedback_required:
+            # If feedback is needed, check if already provided
+            try:
+                # pylint: disable=E1101
+                Feedback.objects.get(feedbacklesson_id=descendant.id,
+                                     course_id=course_id)
+            except Feedback.DoesNotExist:
+                # feedback is required but not yet provided
+                return True
+            else:
+                continue
+    return False
+
+
+def get_root_lesson_ids(course_id):
+    """
+    Get plain list of root lessons for user. If there is only
+    one root node, its children will be returned directly.
+    """
+    # pylint: disable=E1101
+    lesson_id_list = (CourseLesson.objects.filter(course=course_id)
+                      .values_list('lesson', flat=True))
+    if (len(lesson_id_list) == 1 and Lesson.objects
+            .get(id=lesson_id_list[0])
+            .get_children()):
+        # if a course has only one lesson, but this lesson has
+        # children, then show them directly
+        lesson_id_list = (Lesson.objects.get(id=lesson_id_list[0])
+                          .get_children().values_list('id', flat=True))
+    return lesson_id_list
+
+
+def get_lessons(course_id, lesson=None):
+    """
+    Get list of lessons. If lesson_id is provided,
+    then sublessons will be returned.
+    """
+    lesson_list = []
+    if lesson is None:
+        lesson_list = Lesson.objects.filter(
+            id__in=get_root_lesson_ids(course_id))
+    else:
+        lesson_list = lesson.get_children()
+    result = []
+    for lesson_item in lesson_list:
+        result.append({
+            'id': lesson_item.id,
+            'title': lesson_item.title,
+            'needs_feedback': needs_feedback(lesson_item, course_id),
+            'mandatory': lesson_item.mandatory
+        })
+    return result
+
+
+def get_parent_link(lesson, course_id):
+    """
+    Get link to next higher level. If a course has only
+    on lesson directly linked, skip this single lesson.
+    """
+    if lesson.is_root_node():
+        parent_link = "/gui/course/{}/".format(course_id)
+    else:
+        parent = lesson.get_ancestors(ascending=True, include_self=False)[0]
+        root_ids = get_root_lesson_ids(course_id)
+        if lesson.id in root_ids:
+            parent_link = "/gui/course/{}/".format(course_id)
+        else:
+            parent_link = "/gui/course/{}/{}/".format(course_id, parent.id)
+    return parent_link
 
 
 @login_required
@@ -53,16 +126,8 @@ def course_lesson(request, course_id=None, lesson_id=None):
     # pylint: disable=E1101
     course_detail = Course.objects.get(id=course_id)
     lesson = Lesson.objects.get(id=lesson_id)
-    sub_lesson_list = lesson.get_children()
-    if lesson.is_root_node():
-        parent_link = "/gui/course/{}/".format(course_id)
-    else:
-        parent = lesson.get_ancestors(ascending=True, include_self=False)[0]
-        parent_link = "/gui/course/{}/{}/".format(course_id, parent.id)
-    if lesson.needs_feedback(course_id):
-        print("needs_feedback")
     context = {'lesson_details': lesson,
-               'sub_lesson_list': sub_lesson_list,
+               'sub_lesson_list': get_lessons(course_id, lesson),
                'course': course_detail,
-               'back_link': parent_link}
+               'back_link': get_parent_link(lesson, course_id)}
     return render(request, 'lesson.html', context)
