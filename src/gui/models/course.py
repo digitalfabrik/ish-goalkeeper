@@ -10,7 +10,7 @@ class Course(models.Model):
     dates = models.TextField('Kurszeit', max_length=500, blank=True)
 
     def __str__(self):
-        return self.title + " (" + self.location + ") " + " - " + str(self.user)
+        return self.title + " (" + self.location + ") "
 
     class Meta:
         verbose_name = 'Kurs'
@@ -27,13 +27,13 @@ class CourseLesson(models.Model):
         verbose_name = 'Kurslektion'
         verbose_name_plural = 'Kurslektionen'
 
-class CourseUsers(models.Model):
-    user = models.ForeignKey(Course, on_delete=models.CASCADE, blank=False)
+class CourseUser(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
 
     def __str__(self):
-        return self.course.title + " &mdash; " + self.user
+        return self.course.title + " - " + str(self.user)
 
     class Meta:
-        verbose_name = 'Kurs-Benutzer-Zuteilung'
-        verbose_name_plural = 'Kurs-Benutzer-Zuteilungen'
+        verbose_name = 'Coach-Zuordnung'
+        verbose_name_plural = 'Coach-Zuordnungen'

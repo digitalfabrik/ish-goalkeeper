@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h2>{{ lesson_details.title }}</h2>
+    <h3>Unterlerneinheiten</h3>
+{% if sub_lesson_list %}
+  {% for lesson in sub_lesson_list %}
+    <a href="/gui/course/{{ course.id }}/{{ lesson.id }}/" class="div-link">
+      <div class="content-item centered {% if lesson.needs_feedback %}bg-ish{% else %}bg-grey{% endif %}">
+         <h3>{{ lesson.title }}
+          {% if lesson.mandatory %}
+          <img style="height: 1em;" src="{% static "heroicons/icon-exclamation.svg" %}">
+          {% endif %}
+        </h3>
+     </div>
+    </a>
+  {% endfor %}
+    <div class="content-item" style="background: #fff;">
+      <img style="height: 1em;" src="{% static "heroicons/icon-exclamation.svg" %}"> Diese Einheiten sind verpflichtend.
+    </div>
+{% endif %}
+{% if lesson_details.description %}
+      <div class="content-item">
+        <h3>Beschreibung</h3>
+        {{ lesson_details.description }}
+      </div>
+{% endif %}
+{% if lesson_details.questions %}
+      <div class="content-item">
+        <h3>Fragen</h3>
+        {{ lesson_details.questions }}
+      </div>
+{% endif %}
+{% endblock %}
