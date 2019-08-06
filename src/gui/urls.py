@@ -1,7 +1,7 @@
 """
 URL routing
 """
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 # pylint: disable=C0103

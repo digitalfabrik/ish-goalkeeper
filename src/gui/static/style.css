@@ -297,3 +297,7 @@ hr {
 .hide-menu {
   display: none;
 }
+
+.icon-inline {
+  height: 1em;
+}

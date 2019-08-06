@@ -3,10 +3,10 @@
 {% block content %}
       <h2>{{ course.title }}</h2>
       <div class="content-item bg-white">
-        <h3><img style="height: 1.3em;" src="{% static "heroicons/icon-location.svg" %}"> {{ course.location }}</h3>
-        <h3><img style="height: 1.3em;" src="{% static "heroicons/icon-calendar.svg" %}"> {{ course.dates }}</h3>
+        <h3><img class="icon-inline" src="{% static "heroicons/icon-location.svg" %}"> {{ course.location }}</h3>
+        <h3><img class="icon-inline" src="{% static "heroicons/icon-calendar.svg" %}"> {{ course.dates }}</h3>
 {% for user in user_list %}
-        <h3><img style="height: 1.3em;" src="{% static "heroicons/icon-user.svg" %}"> {{ user.first_name }}</h3>
+        <h3><img class="icon-inline" src="{% static "heroicons/icon-user.svg" %}"> {{ user.first_name }}</h3>
 {% endfor %} 
       </div>
       <h2>Lerneinheiten</h2>
@@ -16,14 +16,14 @@
       <div class="content-item centered {% if lesson.needs_feedback %}bg-ish{% else %}bg-grey{% endif %}">
         <h3>{{ lesson.title }}
           {% if lesson.mandatory %}
-          <img style="height: 1em;" src="{% static "heroicons/icon-exclamation.svg" %}">
+          <img class="icon-inline" src="{% static "heroicons/icon-exclamation.svg" %}">
           {% endif %}
         </h3>
       </div>
     </a>
   {% endfor %}
     <div class="content-item" style="background: #fff;">
-      <img style="height: 1em;" src="{% static "heroicons/icon-exclamation.svg" %}"> Diese Einheiten sind verpflichtend.
+      <img class="icon-inline" src="{% static "heroicons/icon-exclamation.svg" %}"> Diese Einheiten sind verpflichtend.
     </div>
 {% endif %}
 {% endblock %}
