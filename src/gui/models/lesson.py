@@ -39,6 +39,10 @@ class LessonMeta(models.Model):
     Fields for meta information about lessons
     """
     description = models.TextField('Name', max_length=150)
+    icon = FilerFileField(related_name='Icon',
+                          null=True,
+                          blank=True,
+                          on_delete=models.CASCADE)
 
     def __str__(self):
         return self.description
@@ -72,6 +76,7 @@ class LessonMetaData(models.Model):
         """
         verbose_name = 'Lektionsmetainformation'
         verbose_name_plural = 'Lektionsmetainformationen'
+        unique_together = (('description', 'lesson'),)
 
 
 class Attachment(models.Model):
@@ -95,4 +100,4 @@ class Attachment(models.Model):
 
     def __str__(self):
         # pylint: disable=E1101
-        return self.file.description + " | " + self.lesson.title
+        return self.description + " | " + self.lesson.title

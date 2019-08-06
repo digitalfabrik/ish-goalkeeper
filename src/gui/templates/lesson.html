@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
     <h2>{{ lesson_details.title }}</h2>
-    <h3>Unterlerneinheiten</h3>
 {% if sub_lesson_list %}
-  {% for lesson in sub_lesson_list %}
+    <h3>Untergeordnete Lerneinheiten</h3>
+ {% for lesson in sub_lesson_list %}
     <a href="/gui/course/{{ course.id }}/{{ lesson.id }}/" class="div-link">
       <div class="content-item centered {% if lesson.needs_feedback %}bg-ish{% else %}bg-grey{% endif %}">
          <h3>{{ lesson.title }}
@@ -19,12 +19,33 @@
       <img style="height: 1em;" src="{% static "heroicons/icon-exclamation.svg" %}"> Diese Einheiten sind verpflichtend.
     </div>
 {% endif %}
+{% for item in lesson_meta %}
+    <div>
+      <h3><img style="height:1em;" src="{{item.icon.url}}"> {{ item.description }}: {{ item.value }}</h3>
+    </div>
+{% endfor %}
 {% if lesson_details.description %}
       <div class="content-item">
         <h3>Beschreibung</h3>
         {{ lesson_details.description }}
       </div>
 {% endif %}
+{% if lesson_attachments %}
+  <h3>Anhang</h3>
+{% endif %}
+{% for attachment in lesson_attachments %}
+  <a href="{{ attachment.url }}" class="div-link">
+    <div class="content-item centered">
+  {% if attachment.is_image %}
+    {% load thumbnail %}
+    {% thumbnail attachment.attached_file 400x400 upscale subject_location=attachment.attached_file.url as thumb %}
+    <img width="100%" src="{{ thumb.url }}">
+  {% else %}
+    <h3><img class="icon-inline" src="{% static "heroicons/icon-download.svg" %}">{{ attachment.description }}</h3>
+  {% endif %}
+    </div>
+  </a>
+{% endfor %}
 {% if lesson_details.questions %}
       <div class="content-item">
         <h3>Fragen</h3>

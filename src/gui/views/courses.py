@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from ..models import CourseUser, Course, CourseLesson, Lesson, Feedback
+from ..models import LessonMetaData, Attachment
 
 
 @login_required
@@ -77,6 +78,42 @@ def get_root_lesson_ids(course_id):
     return lesson_id_list
 
 
+def get_lesson_meta(lesson_id):
+    """
+    Get meta information about a lesson
+    """
+    # pylint: disable=E1101
+    lesson_meta_list = (LessonMetaData.objects.filter(lesson=lesson_id)
+                        .prefetch_related())
+    result = []
+    for item in lesson_meta_list:
+        result.append({
+            'description': item.description.description,
+            'value': item.value,
+            'icon': item.description.icon})
+    return result
+
+
+def get_lesson_attachments(lesson_id):
+    """
+    Get attachments for a lesson
+    """
+    # pylint: disable=E1101
+    lesson_attachments = Attachment.objects.filter(lesson=lesson_id)
+    result = []
+    for attachment in lesson_attachments:
+        url = attachment.attached_file.url
+        result.append({'description': attachment.description,
+                       'url': url,
+                       'is_image': (
+                           True if url.lower().endswith(".jpg")
+                           or url.lower().endswith(".png")
+                           or url.lower().endswith(".jpeg")
+                           else False),
+                       'attached_file': attachment.attached_file, })
+    return result
+
+
 def get_lessons(course_id, lesson=None):
     """
     Get list of lessons. If lesson_id is provided,
@@ -94,7 +131,7 @@ def get_lessons(course_id, lesson=None):
             'id': lesson_item.id,
             'title': lesson_item.title,
             'needs_feedback': needs_feedback(lesson_item, course_id),
-            'mandatory': lesson_item.mandatory
+            'mandatory': lesson_item.mandatory,
         })
     return result
 
@@ -129,5 +166,7 @@ def course_lesson(request, course_id=None, lesson_id=None):
     context = {'lesson_details': lesson,
                'sub_lesson_list': get_lessons(course_id, lesson),
                'course': course_detail,
-               'back_link': get_parent_link(lesson, course_id)}
+               'back_link': get_parent_link(lesson, course_id),
+               'lesson_meta': get_lesson_meta(lesson_id),
+               'lesson_attachments': get_lesson_attachments(lesson_id)}
     return render(request, 'lesson.html', context)
