@@ -10,23 +10,25 @@ body {
   margin: 0 auto;
 }
 
-input {
+.form-style input, .input-ish {
   border: 0;
   font-size: 2em;
   width: 100%;
   margin-top: 1em;
   margin-bottom: 1em;
-}
-
-input[type=text], input[type=password] {
   border-bottom: 1px solid #ed7000;
 }
 
-input, textarea, select { font-family:inherit; }
-
-input[type=submit] {
-  height: 2em;
+.feedback-form input {
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 2em;
+  width: 2em;
+  padding: 0.1em;
+  text-align: center;
 }
+
+input, textarea, select { font-family:inherit; }
 
 h1 {
   color: #ed7000;
@@ -85,6 +87,7 @@ hr {
   padding: 0.5em;
   z-index: 10;
   overflow: auto;
+/*  width: 100%; */
 }
 
 .news-title {
@@ -122,7 +125,7 @@ hr {
   width: 40px;
   height: 32px;
   position: absolute;
-  top: -15px;
+  top: 15px;
   left: 0px;
   cursor: pointer;
   opacity: 0;
@@ -300,4 +303,27 @@ hr {
 
 .icon-inline {
   height: 1em;
+}
+
+.large-padding {
+  padding: 20px;
+}
+
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  color: initial;
+}
+
+.ig-button {
+  margin: 0em;
+  -moz-appearance: button;
+  border: 2px solid #ed7000;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.3em;
+  background: #fff;
 }

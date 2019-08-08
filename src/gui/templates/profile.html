@@ -4,19 +4,23 @@
 <h2>Profil-Einstellungen</h2>
 <form method="post">
   {% csrf_token %}
-  <div class="content-item">
+  <div class="content-item form-style">
     <h2>Passwort ändern</h2>
     {{ pw_form }}
   </div>
-  <input type="submit" value="Passwort speichern">
+  <div class="content-item bg-white centered">
+    <input class="ig-button" type="submit" value="Passwort speichern">
+  </div>
 </form>
 <form method="post">
   {% csrf_token %}
-  <div class="content-item">
+  <div class="content-item form-style">
     <h2>E-Mail-Adresse ändern</h2>
     Deine aktuelle E-Mail-Adresse ist {{ request.user.email }}. Falls du sie ändern möchtest, gib hier eine neue Adresse ein:
     <input type="text" name="email">
   </div>
-  <input type="submit" value="E-Mail speichern">
+  <div class="content-item bg-white centered">
+    <input class="ig-button" type="submit" value="E-Mail speichern">
+  </div>
 </form>
 {% endblock %}

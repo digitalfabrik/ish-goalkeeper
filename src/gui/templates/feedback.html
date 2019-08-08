@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h2>Feedback</h2><h2>{{ lesson.title }}</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="feedback-form content-item centered">
+        <input type="hidden" name="feedback_id" value="{{ feedback.id }}">
+        <h3>Teilnehmende</h3>
+        <h4>Männlich</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('male').stepDown(1);">
+          <input id="male" name="male" type="number" maxlength="2" value="{{ feedback.male }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('male').stepUp(1);">
+        </div>
+        <h4>Weiblich</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('female').stepDown(1);">
+          <input id="female" name="female" type="number" maxlength="2" value="{{ feedback.female }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('female').stepUp(1);">
+        </div>
+        <h4>Anderes Geschlecht</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('other').stepDown(1);">
+          <input id="other" name="other" type="number" maxlength="2" value="{{ feedback.other }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('other').stepUp(1);">
+        </div>
+      </div>
+      <div class="feedback-form content-item centered">
+        <h3>Feedback</h3>
+        <h4>Negativ</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('negative').stepDown(1);">
+          <input id="negative" name="negative" style="border: 1px solid #f00;" type="number" maxlength="2" value="{{ feedback.negative }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('negative').stepUp(1);">
+        </div>
+        <h4>Positiv</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('positive').stepDown(1);">
+          <input id="positive" name="positive" style="border: 1px solid #0f0;" type="number" maxlength="2" value="{{ feedback.positive }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('positive').stepUp(1);">
+        </div>
+      </div>
+      <div class="content-item bg-white centered">
+        <input name="save" type="submit" class="ig-button" value="Speichern">
+      </div>
+      {% if saved %}
+      <div class="content-item centered bg-white">
+        <h3>Gespeichert!</h3>
+      </div>
+      {% endif %}
+    </form>
+{% endblock %}

@@ -1,7 +1,7 @@
 """
 URL routing
 """
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 # pylint: disable=C0103
@@ -19,6 +19,9 @@ urlpatterns = [
          views.course_details,
          name="course_details"),
     path('course/<int:course_id>/<int:lesson_id>/',
-         views.course_lesson,
-         name="course_lesson"),
+         views.lesson_details,
+         name="lesson_details"),
+    path('feedback/<int:course_id>/<int:lesson_id>/',
+         views.feedback_form,
+         name="feedback_form"),
 ]
