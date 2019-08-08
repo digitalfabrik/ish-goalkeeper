@@ -19,11 +19,16 @@ body {
   border-bottom: 1px solid #ed7000;
 }
 
-input, textarea, select { font-family:inherit; }
+.feedback-form input {
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 2em;
+  width: 2em;
+  padding: 0.1em;
+  text-align: center;
+}
 
-/*input[type=submit] {
-  height: 2em;
-}*/
+input, textarea, select { font-family:inherit; }
 
 h1 {
   color: #ed7000;
@@ -82,7 +87,7 @@ hr {
   padding: 0.5em;
   z-index: 10;
   overflow: auto;
-  width: 100%;
+/*  width: 100%; */
 }
 
 .news-title {

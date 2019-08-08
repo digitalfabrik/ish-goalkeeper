@@ -21,4 +21,7 @@ urlpatterns = [
     path('course/<int:course_id>/<int:lesson_id>/',
          views.lesson_details,
          name="lesson_details"),
+    path('feedback/<int:course_id>/<int:lesson_id>/',
+         views.feedback_form,
+         name="feedback_form"),
 ]
