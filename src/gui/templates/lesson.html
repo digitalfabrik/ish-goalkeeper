@@ -18,6 +18,12 @@
     <div class="content-item" style="background: #fff;">
       <img style="height: 1em;" src="{% static "heroicons/icon-exclamation.svg" %}"> Diese Einheiten sind verpflichtend.
     </div>
+    <div class="content-item bg-white"></div>
+{% endif %}
+{% if lesson_details.feedback_required %}
+    <div class="content-item bg-white">
+    <button type="submit" style="float: right; border: 2px solid #ed7000; border-radius: 5%; padding: 10px;">Feedback</button>
+    </div>
 {% endif %}
 {% for item in lesson_meta %}
     <div>
@@ -26,12 +32,8 @@
 {% endfor %}
 {% if lesson_details.description %}
       <div class="content-item">
-        <h3>Beschreibung</h3>
         {{ lesson_details.description }}
       </div>
-{% endif %}
-{% if lesson_attachments %}
-  <h3>Anhang</h3>
 {% endif %}
 {% for attachment in lesson_attachments %}
   <a href="{{ attachment.url }}" class="div-link">
@@ -47,7 +49,7 @@
   </a>
 {% endfor %}
 {% if lesson_details.questions %}
-      <div class="content-item">
+      <div class="content-item large-padding">
         <h3>Fragen</h3>
         {{ lesson_details.questions }}
       </div>

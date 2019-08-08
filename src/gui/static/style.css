@@ -301,3 +301,7 @@ hr {
 .icon-inline {
   height: 1em;
 }
+
+.large-padding {
+  padding: 20px;
+}
