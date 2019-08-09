@@ -7,7 +7,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
 from .models import Course, CourseUser, CourseLesson, News, Profile, Lesson
-from .models import Feedback, LessonMeta, LessonMetaData, Attachment
+from .models import Feedback, LessonMeta, LessonMetaData, Attachment, Logo
 
 
 # pylint: disable=R0903
@@ -36,3 +36,4 @@ admin.site.register(LessonMetaData)
 admin.site.register(Feedback)
 admin.site.register(CourseUser)
 admin.site.register(Attachment)
+admin.site.register(Logo)

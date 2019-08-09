@@ -8,7 +8,6 @@
 {% else %}
     <nav role="navigation">
       <div id="menu-container">
-        <!--<div style="position:absolute;"><img style="width: 35px;" src="{% static "heroicons/icon-menu.svg" %}"></div>-->
         <input type="checkbox" />
         <span></span>
         <span></span>
@@ -16,7 +15,7 @@
         <div id="menu">
           <div class="ish-bg full-menu-placeholder"></div>
           <div class="centered ish-bg full-menu">
-            <img class="centered portrait" src="{% static "images/ish.svg" %}">
+            <img class="centered portrait" src="{{ main_logo }}">
           </div>
           <div class="centered ish-bg full-menu">
             <h3>Coach {{ user_info.name }}</h3>

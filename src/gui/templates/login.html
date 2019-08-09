@@ -5,7 +5,7 @@
   <div class="content-item bg-white">
     {% csrf_token %}
     <div>
-      <img src="{% static "images/ish.svg" %}" class="logo-main">
+      <img src="{{ main_logo }}" class="logo-main">
     </div>
     <h1>Bunter Ball</h1>
     <div >
@@ -25,4 +25,9 @@
     </div>
   </div>
 </form>
+{% for logo in logos %}
+  <div class="content-item bg-white">
+    <img width="100%" src="{{ logo.logo.url }}">
+  </div>
+{% endfor %}
 {% endblock %}
