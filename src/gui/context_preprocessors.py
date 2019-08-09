@@ -11,7 +11,10 @@ def profile_processor(request):
     Get user information for menu.
     """
     # pylint: disable=E1101
-    logo = Logo.objects.get(main=True).logo.url
+    try:
+        logo = Logo.objects.get(main=True).logo.url
+    except Logo.DoesNotExist:
+        logo = ""
     if not request.user.is_authenticated:
         return {'user_info': {'location': '', 'name': '', 'courses': ''},
                 'main_logo': logo}
