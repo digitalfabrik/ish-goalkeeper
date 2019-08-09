@@ -6,7 +6,7 @@
 {% if news_list %}
   {% for news_item in news_list %}
       <div class="content-item">
-        <img class="news-icon" src="{% static "images/ish.svg" %}">
+        <img class="news-icon" src="{{ main_logo }}">
         <p class="news-title">{{ news_item.title }}</p>
         <hr noshade>
         <p>{{ news_item.text }}</p>

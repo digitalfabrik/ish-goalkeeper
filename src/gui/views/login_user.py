@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
+from ..models import Logo
 
 
 @csrf_protect
@@ -16,6 +17,8 @@ def login_screen(request):
     template = loader.get_template('login.html')
     context = {
         'latest_question_list': [],
+        # pylint: disable=E1101
+        'logos': Logo.objects.filter(main=False)
     }
     if request.user.is_authenticated:
         return HttpResponseRedirect("/gui/news")

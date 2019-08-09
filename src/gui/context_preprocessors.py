@@ -3,14 +3,18 @@ Provides needed information for all templates,
 usually user name, location, etc for menu.
 """
 from .models import Profile, CourseUser
+from .models import Logo
 
 
 def profile_processor(request):
     """
     Get user information for menu.
     """
+    # pylint: disable=E1101
+    logo = Logo.objects.get(main=True).logo.url
     if not request.user.is_authenticated:
-        return {'user_info': {'location': '', 'name': '', 'courses': ''}}
+        return {'user_info': {'location': '', 'name': '', 'courses': ''},
+                'main_logo': logo}
     user_info = {}
     # pylint: disable=E1101
     profile = Profile.objects.filter(user=request.user)
@@ -25,4 +29,4 @@ def profile_processor(request):
     courses = CourseUser.objects.filter(user=request.user)
     user_info['courses'] = len(courses)
 
-    return {'user_info': user_info}
+    return {'user_info': user_info, 'main_logo': logo}

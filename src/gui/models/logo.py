@@ -1,0 +1,28 @@
+"""
+Logos for log in screen
+"""
+from django.db import models
+from filer.fields.file import FilerFileField  # pylint: disable=E0401
+
+
+class Logo(models.Model):
+    """
+    Logos
+    """
+    title = models.CharField('Titel', max_length=200, blank=False)
+    logo = FilerFileField(related_name='Logo',
+                          null=True,
+                          blank=True,
+                          on_delete=models.CASCADE)
+    main = models.BooleanField('Hauptlogo', blank=True)
+
+    def __unicode__(self):
+        return str(self.title)
+
+    # pylint: disable=R0903,C0111
+    class Meta:
+        verbose_name = 'Logo'
+        verbose_name_plural = 'Logos'
+
+    def __str__(self):
+        return self.title
