@@ -35,13 +35,15 @@ def needs_feedback(lesson, course_id):
             # If feedback is needed, check if already provided
             try:
                 # pylint: disable=E1101
-                Feedback.objects.get(lesson_id=descendant.id,
-                                     course_id=course_id)
+                feedback = Feedback.objects.get(lesson_id=descendant.id,
+                                                course_id=course_id)
             except Feedback.DoesNotExist:
                 # feedback is required but not yet provided
                 return True
             else:
-                continue
+                if feedback.negative == 0 and feedback.positive == 0:
+                    # Object has been created but no data provided
+                    return True
     return False
 
 
