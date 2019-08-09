@@ -17,7 +17,8 @@ setup(
                 [('usr/lib/systemd/system/', ['systemd/integreat-cms@.service'])],
     install_requires=[
         "django-mptt",
-        "django-filer"
+        "django-filer",
+        "django-summernote"
     ],
     author="Tuer an Tuer - Digitalfabrik gGmbH",
     author_email="info@integreat-app.de",

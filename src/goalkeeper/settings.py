@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mptt',
     'easy_thumbnails',
     'filer',
+    'django_summernote',
     'gui',
 ]
 

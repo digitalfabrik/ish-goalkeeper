@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% autoescape off %}
     <h2>{{ lesson_details.title }}</h2>
 {% if sub_lesson_list %}
     <h3>Untergeordnete Lerneinheiten</h3>
@@ -54,4 +55,5 @@
         {{ lesson_details.questions }}
       </div>
 {% endif %}
+{% endautoescape %}
 {% endblock %}

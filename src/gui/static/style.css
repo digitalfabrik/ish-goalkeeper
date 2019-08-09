@@ -327,3 +327,16 @@ a.button {
   font-size: 1.3em;
   background: #fff;
 }
+
+iframe {
+  height: 219px !important;
+  width: 390px !important;
+}
+
+.note-group-select-from-files {
+  display: none;
+}
+
+.content-item img {
+  max-width: 390px !important;
+}
