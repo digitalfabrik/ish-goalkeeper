@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% autoescape off %}
       <h2>Neuigkeiten</h2>
 {% if news_list %}
   {% for news_item in news_list %}
@@ -15,4 +16,5 @@
 {% else %}
       <div class="news-item">Keine Neuigkeiten.</div>
 {% endif %}
+{% endautoescape %}
 {% endblock %}
