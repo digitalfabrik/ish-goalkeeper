@@ -29,16 +29,24 @@ body {
 
 input, textarea, select { font-family:inherit; }
 
-h1 {
+.login {
   color: #ed7000;
   font-size: 3em;
   text-align: center;
 }
 
-h2 {
+.content > h2 {
   font-size: 1.5em;
   text-align: center;
   width: 100%;
+}
+
+.content-item h2 {
+
+}
+
+a > .content-item > h3, .course-details-box > h3 {
+  margin: 2px;
 }
 
 hr {
@@ -254,10 +262,6 @@ hr {
   float: left;
   padding-top: 3px;
   padding-bottom: 3px;
-}
-
-.content-item h3 {
-  margin: 2px;
 }
 
 .div-link:link, .div-link:visited, .div-link:hover, .div-link:active {
