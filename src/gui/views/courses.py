@@ -4,7 +4,7 @@ View for courses of users.
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from ..models import CourseUser, Course
+from ..models import CourseUser, Course, access_course
 from .lessons import get_lessons, get_root_lesson_ids
 
 
@@ -20,6 +20,7 @@ def show_courses(request):
     return render(request, 'courses.html', context)
 
 
+@access_course
 @login_required
 def course_details(request, course_id=None):
     """

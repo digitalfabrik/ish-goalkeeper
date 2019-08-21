@@ -3,7 +3,7 @@ Module showing feedback statistics
 """
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from ..models import Feedback, Course
+from ..models import Feedback, Course, access_course
 
 
 def generate_pie_chart(pos, neg):
@@ -29,6 +29,7 @@ def generate_pie_chart(pos, neg):
 
 
 @login_required
+@access_course
 def statistics(request, course_id=None):
     """
     Feedback form for lessons

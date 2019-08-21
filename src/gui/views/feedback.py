@@ -5,10 +5,11 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_protect
-from ..models import Lesson, Feedback, Course
+from ..models import Lesson, Feedback, Course, access_course
 
 
 @csrf_protect
+@access_course
 @login_required
 def feedback_form(request, course_id=None, lesson_id=None):
     """
