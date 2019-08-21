@@ -33,6 +33,7 @@ def needs_feedback(lesson, course_id):
     2 = feedback provided
     """
     descendants = lesson.get_descendants(include_self=True)
+    provided = False
     for descendant in descendants:
         if descendant.feedback_required:
             # If feedback is needed, check if already provided
@@ -48,7 +49,10 @@ def needs_feedback(lesson, course_id):
                     # Object has been created but no data provided
                     return 1
                 # Feedback has been provided
-                return 2
+                else:
+                    provided = True
+        if provided:
+            return 2
     return 0
 
 
