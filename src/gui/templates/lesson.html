@@ -7,8 +7,11 @@
     <h3>Untergeordnete Lerneinheiten</h3>
  {% for lesson in sub_lesson_list %}
     <a href="/gui/course/{{ course.id }}/{{ lesson.id }}/" class="div-link">
-      <div class="content-item centered {% if lesson.needs_feedback %}bg-ish{% else %}bg-grey{% endif %}">
+      <div class="content-item centered {% if lesson.needs_feedback == 1 %}bg-ish{% else %}bg-grey{% endif %}">
          <h3>{{ lesson.title }}
+          {% if lesson.needs_feedback == 2 %}
+          <img style="height: 1em;" src="{% static "heroicons/icon-check-circle.svg" %}">
+          {% endif %}
           {% if lesson.mandatory %}
           <img style="height: 1em;" src="{% static "heroicons/icon-exclamation.svg" %}">
           {% endif %}

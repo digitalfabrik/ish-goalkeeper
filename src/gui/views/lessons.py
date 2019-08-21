@@ -28,6 +28,9 @@ def needs_feedback(lesson, course_id):
     """
     Does this lesson or any of its descendants need
     feedback?
+    0 = no feedback required
+    1 = feedback not yet provided
+    2 = feedback provided
     """
     descendants = lesson.get_descendants(include_self=True)
     for descendant in descendants:
@@ -39,12 +42,14 @@ def needs_feedback(lesson, course_id):
                                                 course_id=course_id)
             except Feedback.DoesNotExist:
                 # feedback is required but not yet provided
-                return True
+                return 1
             else:
                 if feedback.negative == 0 and feedback.positive == 0:
                     # Object has been created but no data provided
-                    return True
-    return False
+                    return 1
+                # Feedback has been provided
+                return 2
+    return 0
 
 
 def get_root_lesson_ids(course_id):
