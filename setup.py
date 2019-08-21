@@ -18,7 +18,8 @@ setup(
     install_requires=[
         "django-mptt",
         "django-filer",
-        "django-summernote"
+        "django-summernote",
+        "matplotlib"
     ],
     author="Tuer an Tuer - Digitalfabrik gGmbH",
     author_email="info@integreat-app.de",

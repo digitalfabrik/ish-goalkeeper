@@ -6,3 +6,4 @@ from .profile import edit_profile
 from .courses import show_courses, course_details
 from .lessons import lesson_details, get_root_lesson_ids, get_lessons
 from .feedback import feedback_form
+from .statistics import statistics
