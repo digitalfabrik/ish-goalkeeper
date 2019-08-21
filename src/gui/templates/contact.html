@@ -14,8 +14,8 @@
       <div class="centered">
         <form method="post" action="/gui/send_contact/">
           {% csrf_token %}
-          <textarea style="margin:auto; width: 95%; height: 40vh; resize:none;" name="message"></textarea>
-          <input type="submit" style="border-color: #ed7000; border-sytle:outset;" value="Senden">
+          <textarea style="margin:auto; width: 95%; height: 40vh; resize:none; margin-bottom: 0.3em;" name="message"></textarea>
+          <input type="submit" class="ig-button" value="Senden">
         </form>
       </div>
 {% endblock %}
