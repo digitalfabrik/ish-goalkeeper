@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+      <h2>Feedback</h2>
+      <div class="content-item bg-white centered">
+        <h3>{{ course.title }}</h3>
+        <h4>Durchschnitt</h4>
+        <img width="100%" src="data:image/png;base64, {{ pie }}">
+        <h4>Gesamt</h4>
+        <p>Positiv: {{ positive }}</p>
+        <p>Negativ: {{ negative }}</p>
+      </div>
+{% endblock %}

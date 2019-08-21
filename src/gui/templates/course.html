@@ -3,6 +3,7 @@
 {% block content %}
       <h2>{{ course.title }}</h2>
       <div class="content-item bg-white">
+        <a href="/gui/statistics/{{ course.id }}/"><img style="float:right;" src="{% static "heroicons/icon-graph-bar.svg" %}"></a>
         <h3><img class="icon-inline" src="{% static "heroicons/icon-location.svg" %}"> {{ course.location }}</h3>
         <h3><img class="icon-inline" src="{% static "heroicons/icon-calendar.svg" %}"> {{ course.dates }}</h3>
 {% for user in user_list %}
