@@ -4,6 +4,11 @@
     <h2>Feedback</h2><h2>{{ lesson.title }}</h2>
     <form method="post">
       {% csrf_token %}
+      {% if saved %}
+      <div class="content-item centered bg-white">
+        <h3>Gespeichert!</h3>
+      </div>
+      {% endif %}
       <div class="feedback-form content-item centered">
         <input type="hidden" name="feedback_id" value="{{ feedback.id }}">
         <h3>Teilnehmende</h3>
@@ -41,13 +46,12 @@
           <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('positive').stepUp(1);">
         </div>
       </div>
+      <div class="feedback-form content-item centered">
+        <h3>Kommentar</h3>
+        <textarea style="margin:auto; width: 95%; height: 20vh; resize:none; margin-bottom: 0.3em;" name="comment">{{ feedback.comment }}</textarea>
+      </div>
       <div class="content-item bg-white centered">
         <input name="save" type="submit" class="ig-button" value="Speichern">
       </div>
-      {% if saved %}
-      <div class="content-item centered bg-white">
-        <h3>Gespeichert!</h3>
-      </div>
-      {% endif %}
     </form>
 {% endblock %}
