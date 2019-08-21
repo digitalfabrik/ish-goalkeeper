@@ -15,7 +15,7 @@ def show_courses(request):
     """
     # pylint: disable=E1101
     courses_user = (CourseUser.objects.filter(user=request.user)
-                    .values_list('user', flat=True))
+                    .values_list('course', flat=True))
     courses = Course.objects.filter(id__in=courses_user, active=True)
     context = {'course_list': courses}
     return render(request, 'courses.html', context)
