@@ -32,6 +32,7 @@ def feedback_form(request, course_id=None, lesson_id=None):
         feedback.other = request.POST['other']
         feedback.positive = request.POST['positive']
         feedback.negative = request.POST['negative']
+        feedback.comment = request.POST['comment']
         feedback.save()
         saved = True
     else:
