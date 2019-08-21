@@ -49,10 +49,9 @@ def needs_feedback(lesson, course_id):
                     # Object has been created but no data provided
                     return 1
                 # Feedback has been provided
-                else:
-                    provided = True
-        if provided:
-            return 2
+                provided = True
+    if provided:
+        return 2
     return 0
 
 
