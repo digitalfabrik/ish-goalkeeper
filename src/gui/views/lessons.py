@@ -3,7 +3,7 @@ Views for single lessons
 """
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from ..models import Course, CourseLesson, Lesson, Feedback
+from ..models import Course, CourseLesson, Lesson, Feedback, access_course
 from ..models import LessonMetaData, Attachment
 
 
@@ -131,6 +131,7 @@ def get_lessons(course_id, lesson=None):
     return result
 
 
+@access_course
 @login_required
 def lesson_details(request, course_id=None, lesson_id=None):
     """

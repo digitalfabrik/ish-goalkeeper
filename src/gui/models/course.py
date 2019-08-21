@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.http import HttpResponseForbidden, Http404
 from .lesson import Lesson
-import datetime
+
 
 class Course(models.Model):
     title = models.TextField('Kurstitel', max_length=500, blank=False)
@@ -16,6 +17,7 @@ class Course(models.Model):
         verbose_name = 'Kurs'
         verbose_name_plural = 'Kurse'
 
+
 class CourseLesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
@@ -27,6 +29,7 @@ class CourseLesson(models.Model):
         verbose_name = 'Kurslektion'
         verbose_name_plural = 'Kurslektionen'
 
+
 class CourseUser(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
@@ -37,3 +40,21 @@ class CourseUser(models.Model):
     class Meta:
         verbose_name = 'Coach-Zuordnung'
         verbose_name_plural = 'Coach-Zuordnungen'
+
+
+def access_course(function):
+    def user_can_access(request, **kwargs):
+        if 'course_id' not in kwargs:
+            return function(request, **kwargs)
+        course_id = int(kwargs['course_id'])
+        courses = Course.objects.filter(id=course_id)
+        if not courses:
+            raise Http404
+        course = courses[0]
+        try:
+            CourseUser.objects.get(user=request.user, course=course)
+        except CourseUser.DoesNotExist:
+            return HttpResponseForbidden("Forbidden")
+        else:
+            return function(request, **kwargs)
+    return user_can_access
