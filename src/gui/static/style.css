@@ -340,3 +340,12 @@ iframe {
 .content-item img {
   max-width: 490px !important;
 }
+
+table {
+  border: 0px;
+}
+
+td {
+  padding: 3px;
+  vertical-align: middle;
+}

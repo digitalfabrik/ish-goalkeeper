@@ -30,9 +30,9 @@
     </div>
 {% endif %}
 {% for item in lesson_meta %}
-    <div>
-      <h3><img style="height:1em;" src="{{item.icon.url}}"> {{ item.description }}: {{ item.value }}</h3>
-    </div>
+  <div>
+    <table><tr><td><img style="height:2em;" src="{{item.icon.url}}"></td><td><h3>{{ item.value }}</h3></td></tr></table>
+  </div>
 {% endfor %}
 {% if lesson_details.description %}
       <div class="content-item">
