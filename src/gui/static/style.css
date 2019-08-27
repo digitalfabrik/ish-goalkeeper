@@ -6,7 +6,7 @@ body {
 }
 
 .content {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -329,8 +329,8 @@ a.button {
 }
 
 iframe {
-  height: 219px !important;
-  width: 390px !important;
+  margin-left: 2%;
+  width: 96%
 }
 
 .note-group-select-from-files {
@@ -338,5 +338,5 @@ iframe {
 }
 
 .content-item img {
-  max-width: 390px !important;
+  max-width: 490px !important;
 }
