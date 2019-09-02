@@ -338,8 +338,7 @@ iframe {
 }
 
 .content-item img {
-  max-width: 490px !important;
-  width: 96% !important;
+  max-width: 96%;
   margin-left: 2%;
 }
 
