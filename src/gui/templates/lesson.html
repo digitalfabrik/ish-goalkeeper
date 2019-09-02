@@ -35,7 +35,7 @@
   </div>
 {% endfor %}
 {% if lesson_details.description %}
-      <div class="content-item">
+      <div class="content-item editable-content">
         {{ lesson_details.description }}
       </div>
 {% endif %}
@@ -53,7 +53,7 @@
   </a>
 {% endfor %}
 {% if lesson_details.questions %}
-      <div class="content-item large-padding">
+      <div class="content-item editable-content large-padding">
         <h3>Fragen</h3>
         {{ lesson_details.questions }}
       </div>

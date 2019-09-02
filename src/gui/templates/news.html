@@ -5,7 +5,7 @@
       <h2>Neuigkeiten</h2>
 {% if news_list %}
   {% for news_item in news_list %}
-      <div class="content-item">
+      <div class="content-item editable-content">
         <p class="news-title">{{ news_item.title }}</p>
         <hr noshade>
         <p>{{ news_item.text }}</p>

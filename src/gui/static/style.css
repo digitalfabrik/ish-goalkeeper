@@ -337,7 +337,7 @@ iframe {
   display: none;
 }
 
-.content-item img {
+.editable-content img {
   max-width: 96%;
   margin-left: 2%;
 }
