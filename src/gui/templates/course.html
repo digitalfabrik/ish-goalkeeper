@@ -9,6 +9,7 @@
 {% for user in user_list %}
         <h3><img class="icon-inline" src="{% static "heroicons/icon-user.svg" %}"> {{ user.first_name }}</h3>
 {% endfor %} 
+        <h3><img class="icon-inline" src="{% static "heroicons/icon-clock.svg" %}"> {{ course.timeframe }}</h3>
       </div>
       <h2>Lerneinheiten</h2>
 {% if lesson_list %}

@@ -8,6 +8,7 @@ class Course(models.Model):
     title = models.TextField('Kurstitel', max_length=500, blank=False)
     location = models.TextField('Ort', max_length=500, blank=False)
     active = models.BooleanField('Aktiv', blank=True)
+    timeframe = models.TextField('Umfang', blank=True)
     dates = models.TextField('Kurszeit', max_length=500, blank=True)
 
     def __str__(self):
