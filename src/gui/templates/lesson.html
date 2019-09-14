@@ -3,9 +3,24 @@
 {% block content %}
 {% autoescape off %}
     <h2>{{ lesson_details.title }}</h2>
+{% if lesson_details.feedback_required %}
+    <div style="" class="content-item bg-white">
+      <a href="/gui/feedback/{{ course.id }}/{{ lesson_details.id }}" class="button ig-button" style="float:right;">Feedback</a>
+    </div>
+{% endif %}
+{% for item in lesson_meta %}
+  <div>
+    <table><tr><td><img style="height:2em;" src="{{item.icon.url}}"></td><td><h3>{{ item.value }}</h3></td></tr></table>
+  </div>
+{% endfor %}
+{% if lesson_details.description and lesson_details.description.strip %}
+      <div class="content-item editable-content">
+        {{ lesson_details.description }}
+      </div>
+{% endif %}
 {% if sub_lesson_list %}
     <h3>Untergeordnete Lerneinheiten</h3>
- {% for lesson in sub_lesson_list %}
+  {% for lesson in sub_lesson_list %}
     <a href="/gui/course/{{ course.id }}/{{ lesson.id }}/" class="div-link">
       <div class="content-item centered {% if lesson.needs_feedback == 1 %}bg-ish{% else %}bg-grey{% endif %}">
          <h3>{{ lesson.title }}
@@ -24,19 +39,10 @@
     </div>
     <div class="content-item bg-white"></div>
 {% endif %}
-{% if lesson_details.feedback_required %}
-    <div style="" class="content-item bg-white">
-      <a href="/gui/feedback/{{ course.id }}/{{ lesson_details.id }}" class="button ig-button" style="float:right;">Feedback</a>
-    </div>
-{% endif %}
-{% for item in lesson_meta %}
-  <div>
-    <table><tr><td><img style="height:2em;" src="{{item.icon.url}}"></td><td><h3>{{ item.value }}</h3></td></tr></table>
-  </div>
-{% endfor %}
-{% if lesson_details.description %}
-      <div class="content-item editable-content">
-        {{ lesson_details.description }}
+{% if lesson_details.questions %}
+      <div class="content-item editable-content large-padding">
+        <h3>Fragen</h3>
+        {{ lesson_details.questions }}
       </div>
 {% endif %}
 {% for attachment in lesson_attachments %}
@@ -52,11 +58,5 @@
     </div>
   </a>
 {% endfor %}
-{% if lesson_details.questions %}
-      <div class="content-item editable-content large-padding">
-        <h3>Fragen</h3>
-        {{ lesson_details.questions }}
-      </div>
-{% endif %}
 {% endautoescape %}
 {% endblock %}
