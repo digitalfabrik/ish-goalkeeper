@@ -10,7 +10,7 @@
 {% endif %}
 {% for item in lesson_meta %}
   <div>
-    <table><tr><td><img style="height:2em;" src="{{item.icon.url}}"></td><td><h3>{{ item.value }}</h3></td></tr></table>
+    <table><tr><td><img style="height:2em;" src="{{item.icon.url}}" alt="{{item.description}}" title="{{item.description}}"></td><td><h3>{{ item.value }}</h3></td></tr></table>
   </div>
 {% endfor %}
 {% if lesson_details.description and lesson_details.description.strip %}

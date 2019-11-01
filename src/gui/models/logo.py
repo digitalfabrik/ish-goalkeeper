@@ -21,8 +21,8 @@ class Logo(models.Model):
 
     # pylint: disable=R0903,C0111
     class Meta:
-        verbose_name = 'Logo'
-        verbose_name_plural = 'Logos'
+        verbose_name = 'Partnerlogo'
+        verbose_name_plural = 'Partnerlogos'
 
     def __str__(self):
         return self.title

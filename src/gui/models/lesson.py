@@ -95,8 +95,8 @@ class Attachment(models.Model):
         """
         Meta information about Attachment
         """
-        verbose_name = 'Anhang'
-        verbose_name_plural = 'Anhänge'
+        verbose_name = 'Lektionsanhang'
+        verbose_name_plural = 'Lektionsanhänge'
 
     def __str__(self):
         # pylint: disable=E1101
