@@ -10,7 +10,7 @@ class Lesson(MPTTModel):  # pylint: disable=R0903
     """
     Class for lessons, lessons are ordered in a tree
     """
-    title = models.TextField(max_length=500, blank=False)
+    title = models.TextField("Titel", max_length=500, blank=False)
     parent = TreeForeignKey('self', null=True, blank=True,
                             related_name='children',
                             db_index=True,
@@ -39,10 +39,11 @@ class LessonMeta(models.Model):
     Fields for meta information about lessons
     """
     description = models.TextField('Name', max_length=150)
-    icon = FilerFileField(related_name='Icon',
+    icon = FilerFileField(related_name='icon',
                           null=True,
                           blank=True,
-                          on_delete=models.CASCADE)
+                          on_delete=models.CASCADE,
+                          verbose_name="Icon")
 
     def __str__(self):
         return self.description
@@ -84,11 +85,14 @@ class Attachment(models.Model):
     Attachments for lessons
     """
     description = models.TextField('Beschreibung', max_length=150)
-    attached_file = FilerFileField(related_name='Anhang',
+    attached_file = FilerFileField(related_name='attached_file',
                                    null=True,
                                    blank=True,
-                                   on_delete=models.CASCADE)
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+                                   on_delete=models.CASCADE,
+                                   verbose_name="Datei")
+    lesson = models.ForeignKey(Lesson,
+                               on_delete=models.CASCADE,
+                               verbose_name="Lektion")
 
     # pylint: disable=R0903
     class Meta:
