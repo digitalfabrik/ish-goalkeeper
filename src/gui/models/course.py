@@ -20,8 +20,10 @@ class Course(models.Model):
 
 
 class CourseLesson(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE,
+                               verbose_name="Kurs")
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE,
+                               verbose_name="Lektion")
 
     def __str__(self):
         return self.course.title + " » " + self.lesson.title
@@ -32,8 +34,10 @@ class CourseLesson(models.Model):
 
 
 class CourseUser(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=False,
+                               verbose_name="Kurs")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False,
+                             verbose_name="Benutzer")
 
     def __str__(self):
         return self.course.title + " - " + str(self.user)

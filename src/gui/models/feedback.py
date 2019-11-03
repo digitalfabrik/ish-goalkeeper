@@ -13,10 +13,12 @@ class Feedback(models.Model):
     """
     course = models.ForeignKey(Course,
                                on_delete=models.CASCADE,
-                               blank=False)
+                               blank=False,
+                               verbose_name="Kurs")
     lesson = models.ForeignKey(Lesson,
                                on_delete=models.CASCADE,
-                               blank=False)
+                               blank=False,
+                               verbose_name="Lektion")
     date = models.DateTimeField('Datum', blank=False, default=now)
     comment = models.TextField('Kommentar', max_length=1000, blank=True)
     male = models.IntegerField('Männlich', validators=[
