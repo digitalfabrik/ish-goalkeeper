@@ -8,7 +8,9 @@ class News(models.Model):
     pub_date = models.DateTimeField('Veröffentlichungsdatum', auto_now_add=True)
     author = models.ForeignKey(User,
                                null=True, blank=True,
-                               on_delete=models.SET_NULL)
+                               on_delete=models.SET_NULL,
+                               verbose_name="Autor",
+                               verbose_name_plural="Autoren")
 
     def __unicode__(self):
         return str(self.title)
