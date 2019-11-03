@@ -14,7 +14,8 @@ class Lesson(MPTTModel):  # pylint: disable=R0903
     parent = TreeForeignKey('self', null=True, blank=True,
                             related_name='children',
                             db_index=True,
-                            on_delete=models.CASCADE)
+                            on_delete=models.CASCADE,
+                            verbose_name="Übergeordnete Lektion")
     description = models.TextField('Beschreibung', blank=True)
     questions = models.TextField('Fragen', blank=True)
     mandatory = models.BooleanField('Verpflichtend', blank=True)
@@ -61,8 +62,10 @@ class LessonMetaData(models.Model):
     """
     Meta information about lessons
     """
-    description = models.ForeignKey(LessonMeta, on_delete=models.CASCADE)
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    description = models.ForeignKey(LessonMeta, on_delete=models.CASCADE,
+                                    verbose_name="Beschreibung")
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE,
+                               verbose_name="Lektion")
     value = models.TextField('Datum', max_length=150)
 
     def __str__(self):
