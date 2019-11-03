@@ -27,8 +27,8 @@ class CourseLesson(models.Model):
         return self.course.title + " » " + self.lesson.title
 
     class Meta:
-        verbose_name = 'Zuordnung Kurs-Benutzer'
-        verbose_name_plural = 'Zuordnungen Kurs-Benutzer'
+        verbose_name = 'Zuordnung Kurs-Lektion'
+        verbose_name_plural = 'Zuordnungen Kurs-Lektion'
 
 
 class CourseUser(models.Model):
@@ -40,7 +40,7 @@ class CourseUser(models.Model):
 
     class Meta:
         verbose_name = 'Zuordnung Kurs-Benutzer'
-        verbose_name_plural = 'Zurordnungen Kurs-Benutzer'
+        verbose_name_plural = 'Zuordnungen Kurs-Benutzer'
 
 
 def access_course(function):
