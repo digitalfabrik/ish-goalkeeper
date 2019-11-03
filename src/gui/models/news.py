@@ -9,8 +9,7 @@ class News(models.Model):
     author = models.ForeignKey(User,
                                null=True, blank=True,
                                on_delete=models.SET_NULL,
-                               verbose_name="Autor",
-                               verbose_name_plural="Autoren")
+                               verbose_name="Autor")
 
     def __unicode__(self):
         return str(self.title)
