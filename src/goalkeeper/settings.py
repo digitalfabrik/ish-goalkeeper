@@ -131,6 +131,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mail@exmple.com'
 EMAIL_HOST_PASSWORD = 'password'
 
+EMAIL_CONTACT = ""
+
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR)

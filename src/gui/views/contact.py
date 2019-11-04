@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
 from django.http import HttpResponseRedirect
-
+from django.conf import settings
 
 @login_required
 def contact_form(request):
@@ -27,6 +27,6 @@ def send_contact_form(request):
                          request.POST['message'],
                          reply_to=[request.user.email],
                          from_email='bunterball@geeq.de',
-                         to=['seeberg@integreat-app.de'])
+                         to=[settings.EMAIL_CONTACT])
     email.send()
     return render(request, 'contact.html', context={"sent": True})
