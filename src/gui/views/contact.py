@@ -26,7 +26,7 @@ def send_contact_form(request):
     email = EmailMessage('ISH Goalkeeper - Benachrichtigung',
                          request.POST['message'],
                          reply_to=[request.user.email],
-                         from_email='bunterball@geeq.de',
+                         from_email=settings.EMAIL_HOST_USER,
                          to=[settings.EMAIL_CONTACT])
     email.send()
     return render(request, 'contact.html', context={"sent": True})
