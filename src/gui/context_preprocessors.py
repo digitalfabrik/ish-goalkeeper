@@ -4,6 +4,7 @@ usually user name, location, etc for menu.
 """
 from .models import Profile, CourseUser
 from .models import Logo
+from .models import News
 
 
 def profile_processor(request):
@@ -31,5 +32,6 @@ def profile_processor(request):
         user_info['name'] = request.user
     courses = CourseUser.objects.filter(user=request.user)
     user_info['courses'] = len(courses)
+    mnews = News.objects.filter(menu_item=True)
 
-    return {'user_info': user_info, 'main_logo': logo}
+    return {'user_info': user_info, 'main_logo': logo, 'mnews': mnews}

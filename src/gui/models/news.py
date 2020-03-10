@@ -3,13 +3,21 @@ from django.contrib.auth.models import User
 
 
 class News(models.Model):
-    title = models.CharField('Titel', max_length=200, blank=False)
+    """
+    News model. Will be shown in News, except if menu_item is
+    True. Then it will show up in the main menu.
+    """
+    title = models.CharField('Titel', max_length=200,
+                             blank=False)
     text = models.TextField('Nachricht', blank=False)
-    pub_date = models.DateTimeField('Veröffentlichungsdatum', auto_now_add=True)
+    pub_date = models.DateTimeField('Veröffentlichungsdatum',
+                                    auto_now_add=True)
     author = models.ForeignKey(User,
                                null=True, blank=True,
                                on_delete=models.SET_NULL,
                                verbose_name="Autor")
+    menu_item = models.BooleanField(null=True, blank=True,
+                                    verbose_name="Hauptmenü")
 
     def __unicode__(self):
         return str(self.title)
