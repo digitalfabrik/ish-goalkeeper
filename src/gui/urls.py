@@ -27,4 +27,6 @@ urlpatterns = [
     path('statistics/<int:course_id>/',
          views.statistics,
          name="statistics"),
+    path('mnews/<int:news_id>',
+         views.show_news, name='mnews'),
 ]

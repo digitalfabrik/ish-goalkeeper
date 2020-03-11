@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_protect
+from django.core.mail import EmailMessage
+from django.conf import settings
 from ..models import Lesson, Feedback, Course, access_course
 
 
@@ -34,8 +36,20 @@ def feedback_form(request, course_id=None, lesson_id=None):
         feedback.positive = request.POST['positive']
         feedback.negative = request.POST['negative']
         feedback.comment = request.POST['comment']
+        feedback.childprotection = request.POST['childprotection']
         feedback.save()
         saved = True
+
+        email = EmailMessage('ISH Goalkeeper - Neues Feedback',
+                             "Neues oder geändertes Feedback unter "
+                             "https://{}/admin/gui/feedback/{}/".format(
+                                 request.get_host(),
+                                 feedback.id),
+                             reply_to=[request.user.email],
+                             from_email=settings.EMAIL_HOST_USER,
+                             to=[settings.EMAIL_CONTACT])
+        email.send()
+
     else:
         saved = False
 

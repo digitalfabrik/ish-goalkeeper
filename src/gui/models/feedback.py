@@ -7,6 +7,7 @@ from django.utils.timezone import now
 from .lesson import Lesson
 from .course import Course
 
+
 class Feedback(models.Model):
     """
     Class for collecting feedback
@@ -21,6 +22,8 @@ class Feedback(models.Model):
                                verbose_name="Lektion")
     date = models.DateTimeField('Datum', blank=False, default=now)
     comment = models.TextField('Kommentar', max_length=1000, blank=True)
+    childprotection = models.TextField('Kinderschutzrelevante Information',
+                                       max_length=1000, blank=True)
     male = models.IntegerField('Männlich', validators=[
         MaxValueValidator(99),
         MinValueValidator(0)],
