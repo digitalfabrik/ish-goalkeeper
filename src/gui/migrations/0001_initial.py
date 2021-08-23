@@ -104,7 +104,7 @@ class Migration(migrations.Migration):
             name='LessonMetaData',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('value', models.TextField(max_length=150, verbose_name='Datum')),
+                ('value', models.TextField(max_length=150, verbose_name='Text')),
                 ('description', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gui.LessonMeta')),
                 ('lesson', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gui.Lesson')),
             ],
