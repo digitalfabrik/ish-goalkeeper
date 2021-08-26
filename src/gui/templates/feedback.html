@@ -36,14 +36,68 @@
         <h4>Negativ</h4>
         <div>
           <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('negative').stepDown(1);">
-          <input id="negative" name="negative" style="border: 1px solid #f00;" type="number" maxlength="2" value="{{ feedback.negative }}">
+          <input id="negative" name="negative" style="border: 1px solid #f00;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.negative }}">
           <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('negative').stepUp(1);">
         </div>
         <h4>Positiv</h4>
         <div>
           <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('positive').stepDown(1);">
-          <input id="positive" name="positive" style="border: 1px solid #0f0;" type="number" maxlength="2" value="{{ feedback.positive }}">
+          <input id="positive" name="positive" style="border: 1px solid #0f0;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.positive }}">
           <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('positive').stepUp(1);">
+        </div>
+      </div>
+      <div class="feedback-form content-item centered">
+        <h3>Bälle zu Beginn der AG</h3>
+        <h4>Blau</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('start_blue').stepDown(1);">
+          <input id="start_blue" name="start_blue" style="border: 1px solid #00f;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.start_blue }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('start_blue').stepUp(1);">
+        </div>
+        <h4>Gelb</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('start_yellow').stepDown(1);">
+          <input id="start_yellow" name="start_yellow" style="border: 1px solid #fe0;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.start_yellow }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('start_yellow').stepUp(1);">
+        </div>
+        <h4>Grün</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('start_green').stepDown(1);">
+          <input id="start_green" name="start_green" style="border: 1px solid #0f0;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.start_green }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('start_green').stepUp(1);">
+        </div>
+        <h4>Rot</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('start_red').stepDown(1);">
+          <input id="start_red" name="start_red" style="border: 1px solid #f00;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.start_red }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('start_red').stepUp(1);">
+        </div>
+      </div>
+      <div class="feedback-form content-item centered">
+        <h3>Bälle zum Ende der AG</h3>
+        <h4>Blau</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('end_blue').stepDown(1);">
+          <input id="end_blue" name="end_blue" style="border: 1px solid #00f;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.end_blue }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('end_blue').stepUp(1);">
+        </div>
+        <h4>Gelb</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('end_yellow').stepDown(1);">
+          <input id="end_yellow" name="end_yellow" style="border: 1px solid #fe0;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.end_yellow }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('end_yellow').stepUp(1);">
+        </div>
+        <h4>Grün</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('end_green').stepDown(1);">
+          <input id="end_green" name="end_green" style="border: 1px solid #0f0;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.end_green }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('end_green').stepUp(1);">
+        </div>
+        <h4>Rot</h4>
+        <div>
+          <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('end_red').stepDown(1);">
+          <input id="end_red" name="end_red" style="border: 1px solid #f00;" type="number" min=0 max=100 maxlength="2" value="{{ feedback.end_red }}">
+          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('end_red').stepUp(1);">
         </div>
       </div>
       <div class="feedback-form content-item centered">
