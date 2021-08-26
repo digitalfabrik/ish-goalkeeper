@@ -36,11 +36,11 @@ class Feedback(models.Model):
         MaxValueValidator(99),
         MinValueValidator(0)],
         default=0)
-    positive = models.IntegerField('Grüne Bälle', validators=[
+    positive = models.IntegerField('Positiv', validators=[
         MaxValueValidator(99),
         MinValueValidator(0)],
         default=0)
-    negative = models.IntegerField('Rote Bälle', validators=[
+    negative = models.IntegerField('Negativ', validators=[
         MaxValueValidator(99),
         MinValueValidator(0)],
         default=0)
