@@ -22,7 +22,8 @@ class Feedback(models.Model):  # pylint: disable=R0903
                                blank=False,
                                verbose_name="Lektion")
     date = models.DateTimeField('Datum', blank=False, default=now)
-    comment = models.TextField('Kommentar', max_length=1000, blank=True)
+    comment = models.TextField('Kommentar des Coaches', max_length=1000, blank=True)
+    quote_child = models.TextField('Zitat eines Kindes', max_length=1000, blank=True)
     childprotection = models.TextField('Kinderschutzrelevante Information',
                                        max_length=1000, blank=True)
     male = models.IntegerField(
