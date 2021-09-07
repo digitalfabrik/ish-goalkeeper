@@ -16,6 +16,8 @@ class Lesson(MPTTModel):  # pylint: disable=R0903
                             db_index=True,
                             on_delete=models.CASCADE,
                             verbose_name="Übergeordnete Lektion")
+    goal = models.TextField('Zielerklärung', blank=True)
+    hints = models.TextField('Pädagogische Hinweise', blank=True)
     description = models.TextField('Beschreibung', blank=True)
     questions = models.TextField('Reflektionsfragen', blank=True)
     mandatory = models.BooleanField('Verpflichtend', blank=True)
