@@ -53,7 +53,7 @@
     {% thumbnail attachment.attached_file 400x400 upscale subject_location=attachment.attached_file.url as thumb %}
     <img width="100%" src="{{ thumb.url }}">
   {% else %}
-    <h3><img class="icon-inline" src="{% static "heroicons/icon-download.svg" %}">{{ attachment.description }}</h3>
+    <h3><img class="icon-inline" src="{% static "heroicons/icon-download.svg" %}">{{ attachment.title }}</h3>
   {% endif %}
     </div>
   </a>
