@@ -15,7 +15,7 @@ class LessonAdmin(SummernoteModelAdmin):
     """
     Rich Text Editor for Lessons
     """
-    summernote_fields = ['description', 'questions']
+    summernote_fields = ['description', 'questions', 'hints', 'goal']
 
 
 # pylint: disable=R0903
