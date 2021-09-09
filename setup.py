@@ -19,7 +19,8 @@ setup(
         "django-mptt",
         "django-filer",
         "django-summernote",
-        "matplotlib"
+        "matplotlib",
+        "django-jazzmin"
     ],
     author="Tuer an Tuer - Digitalfabrik gGmbH",
     author_email="info@integreat-app.de",

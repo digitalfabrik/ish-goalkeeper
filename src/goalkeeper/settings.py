@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -144,3 +145,8 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters', )
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+JAZZMIN_SETTINGS = {
+    "search_model": "models.Lesson",
+}
