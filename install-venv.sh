@@ -4,4 +4,6 @@
 # SQL server is needed to run the CMS.
 python3 -m venv .venv
 source .venv/bin/activate
+pip install --upgrade pip
+pip install --upgrade setuptools
 python3 setup.py develop
