@@ -39,11 +39,11 @@ class Feedback(models.Model):  # pylint: disable=R0903
         validators=[MaxValueValidator(99), MinValueValidator(0)],
         default=0)
     positive = models.IntegerField(
-        'Grüne Bälle',
+        'Positiv',
         validators=[MaxValueValidator(99), MinValueValidator(0)],
         default=0)
     negative = models.IntegerField(
-        'Rote Bälle',
+        'Negativ',
         validators=[MaxValueValidator(99), MinValueValidator(0)],
         default=0)
     start_blue = models.IntegerField(
