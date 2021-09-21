@@ -40,11 +40,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='feedback',
             name='negative',
-            field=models.IntegerField(validators=[django.core.validators.MaxValueValidator(99), django.core.validators.MinValueValidator(0)], verbose_name='Negativ'),
+            field=models.IntegerField(validators=[django.core.validators.MaxValueValidator(99), django.core.validators.MinValueValidator(0)], verbose_name='Rote Bälle'),
         ),
         migrations.AlterField(
             model_name='feedback',
             name='positive',
-            field=models.IntegerField(validators=[django.core.validators.MaxValueValidator(99), django.core.validators.MinValueValidator(0)], verbose_name='Positiv'),
+            field=models.IntegerField(validators=[django.core.validators.MaxValueValidator(99), django.core.validators.MinValueValidator(0)], verbose_name='Grüne Bälle'),
         ),
     ]
