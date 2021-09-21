@@ -66,7 +66,7 @@ class LessonMetaData(models.Model):
                                     verbose_name="Beschreibung")
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE,
                                verbose_name="Lektion")
-    value = models.TextField('Datum', max_length=150)
+    value = models.TextField('Text', max_length=150)
 
     def __str__(self):
         # pylint: disable=E1101
