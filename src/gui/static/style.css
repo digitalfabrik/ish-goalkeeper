@@ -45,6 +45,16 @@ input, textarea, select { font-family:inherit; }
 
 }
 
+.content-item label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.content-item input {
+  display: block;
+  width: calc(100% - 0.5em);
+}
+
 a > .content-item > h3, .course-details-box > h3 {
   margin: 2px;
 }
@@ -350,3 +360,4 @@ td {
   padding: 3px;
   vertical-align: middle;
 }
+

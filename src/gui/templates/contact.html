@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-      <h2>Kontakt</h2>
+      <h2>Kontakt Projektleitung</h2>
 {% if sent %}
       <div class="content-item centered">
         <p>Nachricht erfolgreich versandt.</p>
@@ -18,4 +18,27 @@
           <input type="submit" class="ig-button" value="Senden">
         </form>
       </div>
+      <h2>Team</h2>
+      <form method="post" action="/gui/send_contact">
+        <div class="content-item">
+          <label>Porträt</label>
+          <input type="text" placeholder="Porträt">
+        </div>
+        <div class="content-item">
+          <label>Name</label>
+          <input type="text" placeholder="Name">
+        </div>
+        <div class="content-item">
+          <label>Telefonnumer</label>
+          <input type="tel" placeholder="Telefonnummer">
+        </div>
+        <div class="content-item">
+          <label>E-Mail-Adresse</label>
+          <input type="" placeholder="E-Mail-Adresse">
+        </div>
+        <div class="centered">
+          <input type="submit" class="centered ig-button" value="Senden">
+        </div>
+      </form>
 {% endblock %}
+
