@@ -67,6 +67,7 @@ class LessonMetaData(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE,
                                verbose_name="Lektion")
     value = models.TextField('Text', max_length=150)
+    sort = models.IntegerField('Sortierung', default=-1, max_length=150)
 
     def __str__(self):
         # pylint: disable=E1101
@@ -80,6 +81,7 @@ class LessonMetaData(models.Model):
         """
         verbose_name = 'Lektionsmetainformation'
         verbose_name_plural = 'Lektionsmetainformationen'
+        ordering = ['sort']
         unique_together = (('description', 'lesson'),)
 
 

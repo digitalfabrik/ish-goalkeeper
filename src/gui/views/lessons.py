@@ -85,7 +85,9 @@ def get_lesson_meta(lesson_id):
         result.append({
             'description': item.description.description,
             'value': item.value,
-            'icon': item.description.icon})
+            'icon': item.description.icon,
+            'sort' : item.sort
+        })
     return result
 
 
