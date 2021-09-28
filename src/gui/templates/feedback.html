@@ -22,7 +22,7 @@
         <div>
           <img src="{% static "heroicons/icon-minus-circle.svg" %}" style="width: 2em; margin-right: 2em;" onclick="document.getElementById('female').stepDown(1);">
           <input id="female" name="female" type="number" maxlength="2" value="{{ feedback.female }}">
-          <img src="{% static "heroicons/icon-plus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('female').stepUp(1);">
+          <img src="{% static "heroicons/icon-pRKlus-circle.svg" %}" style="width: 2em; margin-left: 2em;" onclick="document.getElementById('female').stepUp(1);">
         </div>
         <h4>Anderes Geschlecht</h4>
         <div>
@@ -111,6 +111,10 @@
       <div class="feedback-form content-item centered">
         <h3>Kinderschutzrelevante Anmerkungen</h3>
         <textarea style="margin:auto; width: 95%; height: 20vh; resize:none; margin-bottom: 0.3em;" name="childprotection">{{ feedback.childprotection }}</textarea>
+      </div>
+      <div class="feedback-form content-item centered">
+        <h3>Bild hochladen</h3>
+        <input type="file" accept="image/*" capture="camera">
       </div>
       <div class="content-item bg-white centered">
         <input name="save" type="submit" class="ig-button" value="Speichern">

@@ -4,10 +4,11 @@ Models related to collecting feedback
 # pylint: disable=E0401
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.forms import FileField, ImageField
 from django.utils.timezone import now
 from .lesson import Lesson
 from .course import Course
-
+# from ...goalkeeper.settings import MEDIA_ROOT
 
 class Feedback(models.Model):  # pylint: disable=R0903
     """
@@ -26,6 +27,7 @@ class Feedback(models.Model):  # pylint: disable=R0903
     quote_child = models.TextField('Zitat eines Kindes', max_length=1000, blank=True)
     childprotection = models.TextField('Kinderschutzrelevante Information',
                                        max_length=1000, blank=True)
+    image = FileField() # upload_to = MEDIA_ROOT
     male = models.IntegerField(
         'Männlich',
         validators=[MaxValueValidator(99), MinValueValidator(0)],
