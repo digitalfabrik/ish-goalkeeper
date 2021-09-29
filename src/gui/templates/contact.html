@@ -1,21 +1,51 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-      <h2>Kontakt</h2>
+<h2>Kontakt</h2>
 {% if sent %}
-      <div class="content-item centered">
-        <p>Nachricht erfolgreich versandt.</p>
-      </div>
+  <div class="content-item centered">
+    <p>Nachricht erfolgreich versandt.</p>
+  </div>
 {% endif %}
-      <div class="content-item centered">
-        <p>Nimm Kontakt zum Team auf. Die Rückmeldung erhältst du per E-Mail.</p>
-        <p>Alternativ kannst du auch eine E-Mail an <a href="mailto:bunterball@insafehands.de">bunterball@insafehands.de</a> schreiben.
-      </div>
-      <div class="centered">
-        <form method="post" action="/gui/send_contact/">
-          {% csrf_token %}
-          <textarea style="margin:auto; width: 95%; height: 40vh; resize:none; margin-bottom: 0.3em;" name="message"></textarea>
-          <input type="submit" class="ig-button" value="Senden">
-        </form>
-      </div>
+<div class="content-item centered">
+  <p>Nimm Kontakt zum Team auf. Die Rückmeldung erhältst du per E-Mail.</p>
+  <p>Alternativ kannst du auch eine E-Mail an <a href="mailto:bunterball@insafehands.de">bunterball@insafehands.de</a> schreiben.
+</div>
+<div class="centered">
+  <form method="post" action="/gui/contact/">
+    {% csrf_token %}
+    <textarea style="margin:auto; width: 95%; height: 20vh; resize:none; margin-bottom: 0.3em;" name="message"></textarea>
+    <input type="submit" class="ig-button" value="Nachricht Senden">
+  </form>
+</div>
+
+<h2>Projektleitung</h2>
+<div class="content-item">
+{% for user in pms %}
+<div style="margin-top: 1em; margin-bottom: 1em;">
+  {% if user.profile.avatar %}
+  <img class="portrait centered" style="margin-bottom: 0.2em;" src="/media/{{ user.profile.avatar }}">
+  {% endif %}
+  <div class="centered" style="font-weight: bold;">{{ user.first_name }} {{ user.last_name }}</div>
+  {% if user.profile.telephone %}
+  <div class="centered">Telefon: {{ user.profile.telephone }}</div>
+  {% endif %}
+</div>
+{% endfor %}
+</div>
+
+<h2>Team</h2>
+<div class="content-item">
+{% for user in team %}
+<div style="margin-top: 1em; margin-bottom: 1em;">
+  {% if user.profile.avatar %}
+  <img class="portrait centered" style="margin-bottom: 0.2em;" src="/media/{{ user.profile.avatar }}">
+  {% endif %}
+  <div class="centered" style="font-weight: bold;">{{ user.first_name }} {{ user.last_name }}</div>
+  {% if user.profile.telephone %}
+  <div class="centered">Telefon: {{ user.profile.telephone }}</div>
+  {% endif %}
+</div>
+{% endfor %}
+</div>
 {% endblock %}

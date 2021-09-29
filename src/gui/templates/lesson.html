@@ -4,7 +4,7 @@
 {% autoescape off %}
     <h2>{{ lesson_details.title }}</h2>
 {% if lesson_details.feedback_required %}
-    <div style="" class="content-item bg-white">
+    <div class="content-item bg-white">
       <a href="/gui/feedback/{{ course.id }}/{{ lesson_details.id }}" class="button ig-button" style="float:right;">Feedback</a>
     </div>
 {% endif %}
