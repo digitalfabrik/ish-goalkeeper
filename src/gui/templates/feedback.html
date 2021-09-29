@@ -2,12 +2,6 @@
 {% load static %}
 {% block content %}
     <h2>Feedback</h2><h2>{{ lesson.title }}</h2>
-
-    <p>
-      Hier hast du Platz all das aufzuschreiben, was du in der AG bzw. bei einem Kind beobachtet hast und was dir kinderschutzrelevant erscheint. Bitte beschreibe deine Beobachtung so sachlich, neutral und detailliert wie möglich. Wir kommen dann ggf. mit Nachfragen auf dich zu. <br> 
-      Solltest du das Gefühl haben, dass deine Beobachtungen extrem waren und ein akutes Handeln notwendig ist, dann klingel bitte zusätzlich bei Annabell durch oder schreib ihr eine Mail an <a href="mailto:annabell@insafehands.de">annabell@insafehands.de</a>.
-    </p>
-
     <form method="post">
       {% csrf_token %}
       {% if saved %}
@@ -115,6 +109,10 @@
         <textarea style="margin:auto; width: 95%; height: 20vh; resize:none; margin-bottom: 0.3em;" name="quote_child">{{ feedback.quote_child }}</textarea>
       </div>
       <div class="feedback-form content-item centered">
+        <p>
+          Hier hast du Platz all das aufzuschreiben, was du in der AG bzw. bei einem Kind beobachtet hast und was dir kinderschutzrelevant erscheint. Bitte beschreibe deine Beobachtung so sachlich, neutral und detailliert wie möglich. Wir kommen dann ggf. mit Nachfragen auf dich zu. <br> 
+          Solltest du das Gefühl haben, dass deine Beobachtungen extrem waren und ein akutes Handeln notwendig ist, dann klingel bitte zusätzlich bei Annabell durch oder schreib ihr eine Mail an <a href="mailto:annabell@insafehands.de">annabell@insafehands.de</a>.
+        </p>
         <h3>Kinderschutzrelevante Anmerkungen</h3>
         <textarea style="margin:auto; width: 95%; height: 20vh; resize:none; margin-bottom: 0.3em;" name="childprotection">{{ feedback.childprotection }}</textarea>
       </div>
