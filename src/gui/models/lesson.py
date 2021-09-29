@@ -87,7 +87,7 @@ class Attachment(models.Model):
     """
     Attachments for lessons
     """
-    description = models.TextField('Beschreibung', max_length=150)
+    title = models.TextField('Titel', max_length=150)
     attached_file = FilerFileField(related_name='attached_file',
                                    null=True,
                                    blank=True,

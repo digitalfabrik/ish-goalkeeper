@@ -98,7 +98,7 @@ def get_lesson_attachments(lesson_id):
     result = []
     for attachment in lesson_attachments:
         url = attachment.attached_file.url
-        result.append({'description': attachment.description,
+        result.append({'title': attachment.title,
                        'url': url,
                        'is_image': (
                            True if url.lower().endswith(".jpg")
