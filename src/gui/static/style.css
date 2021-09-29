@@ -98,8 +98,9 @@ hr {
   font-weight: bold;
 }
 
-.news-text {
-
+.news img {
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .news-date {
