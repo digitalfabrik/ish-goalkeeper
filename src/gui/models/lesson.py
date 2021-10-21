@@ -109,4 +109,4 @@ class Attachment(models.Model):
 
     def __str__(self):
         # pylint: disable=E1101
-        return self.description + " | " + self.lesson.title
+        return self.title + " | " + self.lesson.title
