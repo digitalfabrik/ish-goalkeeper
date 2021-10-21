@@ -16,7 +16,21 @@ class LessonAdmin(SummernoteModelAdmin):
     Rich Text Editor for Lessons
     """
     summernote_fields = ['description', 'questions', 'hints', 'goal']
+    search_fields = ['title']
 
+# pylint: disable=R0903
+class CourseAdmin(admin.ModelAdmin):
+    """
+    Modify Course administration
+    """
+    search_fields = ['title']
+
+# pylint: disable=R0903
+class AttachmentAdmin(admin.ModelAdmin):
+    """
+    Modify Attachment administration
+    """
+    search_fields = ['title']
 
 # pylint: disable=R0903
 class NewsAdmin(SummernoteModelAdmin):
@@ -25,8 +39,7 @@ class NewsAdmin(SummernoteModelAdmin):
     """
     summernote_fields = 'text'
 
-
-admin.site.register(Course)
+admin.site.register(Course, CourseAdmin)
 admin.site.register(CourseLesson)
 admin.site.register(News, NewsAdmin)
 admin.site.register(Profile)
@@ -35,5 +48,5 @@ admin.site.register(LessonMeta)
 admin.site.register(LessonMetaData)
 admin.site.register(Feedback)
 admin.site.register(CourseUser)
-admin.site.register(Attachment)
+admin.site.register(Attachment, AttachmentAdmin)
 admin.site.register(Logo)
