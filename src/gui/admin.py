@@ -10,6 +10,7 @@ from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 from .models import Course, CourseUser, CourseLesson, News, Profile, Lesson
 from .models import Feedback, LessonMeta, LessonMetaData, Attachment, Logo
+from .models import KnowledgeArticle, KnowledgeAttachment
 
 
 @admin.action(description='Datei als CSV exportieren')
@@ -67,6 +68,14 @@ class NewsAdmin(SummernoteModelAdmin):
     """
     summernote_fields = 'text'
 
+# pylint: disable=R0903
+class KnowledgeArticleAdmin(SummernoteModelAdmin):
+    """
+    Rich Text editor for News
+    """
+    summernote_fields = 'content'
+    search_fields = ['title']
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(CourseLesson)
 admin.site.register(News, NewsAdmin)
@@ -78,3 +87,5 @@ admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(CourseUser)
 admin.site.register(Attachment, AttachmentAdmin)
 admin.site.register(Logo)
+admin.site.register(KnowledgeArticle, KnowledgeArticleAdmin)
+admin.site.register(KnowledgeAttachment)
