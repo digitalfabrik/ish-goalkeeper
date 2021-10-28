@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% autoescape off %}
+{% if article %}
+      <h2>{{ article.title }}</h2>
+      <div class="content-item bg-white">
+      {{ article.content }}
+      </div>
+{% if article.attachments.all %}
+      <h2>Dateien</h2>
+  {% for attachment in article.attachments.all %}
+  <a href="{{ attachment.attached_file.url }}" class="div-link">
+    <div class="content-item centered">
+    {% if attachment.is_image %}
+      {% load thumbnail %}
+      {% thumbnail attachment.attached_file 400x400 upscale subject_location=attachment.attached_file.url as thumb %}
+    <img width="100%" src="{{ thumb.url }}">
+    {% else %}
+    <h3><img class="icon-inline" src="{% static "heroicons/icon-download.svg" %}">{{ attachment.title }}</h3>
+    {% endif %}
+    </div>
+  </a>
+  {% endfor %}
+{% endif %}
+
+{% endif %}
+      <h2>{% if article %}Untergeordnete Artikel{% else %}Verfügbare Artikel{% endif %}</h2>
+{% for child in children %}
+    <a href="/gui/knowledge/{{ child.id }}" class="div-link">
+      <div class="content-item">
+        <div class="centered course-large-style-box">
+        <div class="ish-bg course-style-box"></div>
+        </div>
+        <div class="course-details-box">
+        <h3 style="margin-top: 0.6em;">{{ child.title }}</h3>
+        </div>
+      </div>
+    </a>
+{% endfor %}
+{% endautoescape %}
+{% endblock %}
