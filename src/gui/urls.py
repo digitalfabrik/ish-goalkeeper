@@ -29,4 +29,10 @@ urlpatterns = [
          name="statistics"),
     path('mnews/<int:news_id>',
          views.show_news, name='mnews'),
+    path('knowledge/',
+         views.knowledge_article, name='knowledge'
+        ),
+    path('knowledge/<int:knowledge_article_id>',
+         views.knowledge_article, name='knowledge'
+        ),
 ]

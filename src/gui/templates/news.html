@@ -9,7 +9,7 @@
         <p class="news-title">{{ news_item.title }}</p>
         <hr noshade>
         <p>{{ news_item.text }}</p>
-        <p class="news-date">{{ news_item.author.first_name }} {{ news_item.author.last_name }}, {{ news_item.pub_date }}</p>
+        <p class="news-date">{{ news_item.author.first_name }} {{ news_item.author.last_name }} {{ news_item.pub_date }}</p>
       </div>
   {% endfor %}
 {% else %}
