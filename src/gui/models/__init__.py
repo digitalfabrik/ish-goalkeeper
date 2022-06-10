@@ -4,3 +4,4 @@ from .profile import Profile
 from .lesson import Lesson, LessonMeta, LessonMetaData, Attachment
 from .feedback import Feedback
 from .logo import Logo
+# from .payment import Payment

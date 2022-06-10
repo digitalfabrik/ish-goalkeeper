@@ -29,4 +29,5 @@ urlpatterns = [
          name="statistics"),
     path('mnews/<int:news_id>',
          views.show_news, name='mnews'),
+    path('payment/', views.payment, name="payment"),     
 ]

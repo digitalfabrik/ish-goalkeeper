@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% autoescape off %}
+
+<h2>Abrechnungen</h2>
+<form action="login/" method="post">
+    <div class="content-item bg-white">
+      {% csrf_token %}
+      <div class="content-item bg-white centered">
+        <label for="date">Datum</label><br>
+        <input type="date" name="date">
+      </div>
+      <div class="content-item bg-white centered">
+        <label for="course">Kurs</label><br>
+        <select name="course">
+          {% for course in courses %}
+            <option>{{ course.label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="content-item bg-white centered">
+        <label for="hours">Stundensatz</label><br>
+        <select name="hours">
+          {% for hour in hours %}
+            <option>{{ hour.label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="content-item bg-white centered">
+            <label for="time">Aufgewendete Zeit</label><br>
+            <input type="time" name="time">
+      </div>
+      <div class="content-item bg-white centered">
+        <input name="save" type="submit" class="ig-button" value="Speichern">
+      </div>
+    </div>
+</form>
+
+{% endautoescape %}
+{% endblock %}
