@@ -45,6 +45,10 @@ input, textarea, select { font-family:inherit; }
 
 }
 
+.content-item h3 {
+  margin: 0.5em 0;
+}
+
 a > .content-item > h3, .course-details-box > h3 {
   margin: 2px;
 }
