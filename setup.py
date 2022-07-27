@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Install with dependencies
+"""
 
 import os
 from setuptools import find_packages, setup
@@ -10,16 +13,20 @@ setup(
     package_dir={'':'src'},
     include_package_data=True,
     scripts=['src/manage.py'],
-    data_files= [("lib/integreat-{}".format(root), [os.path.join(root, f) for f in files])
+    data_files= [(f"lib/integreat-{root}", [os.path.join(root, f) for f in files])
                  for root, dirs, files in os.walk('backend/cms/templates/')] +
-                [("lib/integreat-{}".format(root), [os.path.join(root, f) for f in files])
+                [(f"lib/integreat-{root}", [os.path.join(root, f) for f in files])
                  for root, dirs, files in os.walk('backend/cms/static/')] +
                 [('usr/lib/systemd/system/', ['systemd/integreat-cms@.service'])],
     install_requires=[
         "django-mptt",
         "django-filer",
         "django-summernote",
-        "matplotlib"
+        "matplotlib",
+        "django-admin-rangefilter"
+    ],
+    tests_require=[
+        "django-pylint"
     ],
     author="Tuer an Tuer - Digitalfabrik gGmbH",
     author_email="info@integreat-app.de",

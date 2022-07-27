@@ -1,0 +1,3 @@
+[MASTER]
+django-settings-module=goalkeeper.settings
+load-plugins=pylint_django

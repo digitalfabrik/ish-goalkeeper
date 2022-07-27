@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'filer',
     'django_summernote',
     'gui',
+    'rangefilter',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,5 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters', )
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
