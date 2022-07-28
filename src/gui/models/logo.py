@@ -2,9 +2,10 @@
 Logos for log in screen
 """
 from django.db import models
-from filer.fields.file import FilerFileField  # pylint: disable=E0401
+from filer.fields.file import FilerFileField
 
 
+# pylint: disable=W5102
 class Logo(models.Model):
     """
     Logos
@@ -19,7 +20,6 @@ class Logo(models.Model):
     def __unicode__(self):
         return str(self.title)
 
-    # pylint: disable=R0903,C0111
     class Meta:
         verbose_name = 'Partnerlogo'
         verbose_name_plural = 'Partnerlogos'

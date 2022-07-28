@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h2>Stundenerfassung</h2>
+
+<form method="post">
+    {{ formset.management_form }}
+    {% csrf_token %}
+    {% for form in formset %}
+      <h3 style="text-align: center;">Zeit {{ forloop.counter }}</h3>
+       <table>
+        {{ form }}
+      </table>
+    {% endfor %}
+    <input class="btn btn-primary" type="submit" value="Speichern" />
+</form>
+{% endblock %}

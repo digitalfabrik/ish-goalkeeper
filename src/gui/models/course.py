@@ -35,9 +35,11 @@ class CourseLesson(models.Model):
 
 class CourseUser(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=False,
-                               verbose_name="Kurs")
+                               verbose_name="Kurs",
+                               related_name='users')
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False,
-                             verbose_name="Benutzer")
+                             verbose_name="Benutzer",
+                             related_name='courses')
 
     def __str__(self):
         return self.course.title + " - " + str(self.user)

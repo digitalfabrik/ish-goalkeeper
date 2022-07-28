@@ -15,6 +15,7 @@ urlpatterns = [
     path('send_contact/', views.send_contact_form, name="send_contact_form"),
     path('profile/', views.edit_profile, name="edit_profile"),
     path('courses/', views.show_courses, name="show_courses"),
+    path('timesheet/', views.timesheet, name="timesheet"),
     path('course/<int:course_id>/',
          views.course_details,
          name="course_details"),
