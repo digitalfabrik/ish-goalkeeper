@@ -13,11 +13,6 @@ setup(
     package_dir={'':'src'},
     include_package_data=True,
     scripts=['src/manage.py'],
-    data_files= [(f"lib/integreat-{root}", [os.path.join(root, f) for f in files])
-                 for root, dirs, files in os.walk('backend/cms/templates/')] +
-                [(f"lib/integreat-{root}", [os.path.join(root, f) for f in files])
-                 for root, dirs, files in os.walk('backend/cms/static/')] +
-                [('usr/lib/systemd/system/', ['systemd/integreat-cms@.service'])],
     install_requires=[
         "django-mptt",
         "django-filer",
