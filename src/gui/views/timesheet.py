@@ -28,7 +28,4 @@ def timesheet(request):
                     f"{instance.hours} Stunden für {instance.course} "
                     f"am {instance.date} gespeichert.")
     formset = TimeSheetFormSet()
-    for form in formset:
-        form.fields["course"].queryset = Course.objects.filter(users__user=request.user)
-
     return render(request, 'timesheet.html', context={'formset': formset})
