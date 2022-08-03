@@ -133,7 +133,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mail@exmple.com'
 EMAIL_HOST_PASSWORD = 'password'
 
-EMAIL_CONTACT = ""
+EMAIL_CONTACT = "contact@example.com"
+EMAIL_CONTACT_TEACHERS = "contact-teachers@example.com"
 
 MEDIA_URL = '/media/'
 

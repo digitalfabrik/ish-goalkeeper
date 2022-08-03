@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load has_group %}
 {% block content %}
 <h2>Kontakt</h2>
 {% if sent %}
@@ -9,7 +10,7 @@
 {% endif %}
 <div class="content-item centered">
   <p>Nimm Kontakt zum Team auf. Die Rückmeldung erhältst du per E-Mail.</p>
-  <p>Alternativ kannst du auch eine E-Mail an <a href="mailto:bunterball@insafehands.de">bunterball@insafehands.de</a> schreiben.
+  <p>Alternativ kannst du auch eine E-Mail an <a href="mailto:{{ mail_to }}">{{ mail_to }}</a> schreiben.
 </div>
 <div class="centered">
   <form method="post" action="/gui/contact/">
@@ -33,7 +34,7 @@
 </div>
 {% endfor %}
 </div>
-
+{% if request.user|has_group:"Team" %}
 <h2>Team</h2>
 <div class="content-item">
 {% for user in team %}
@@ -48,4 +49,5 @@
 </div>
 {% endfor %}
 </div>
+{% endif %}
 {% endblock %}
