@@ -3,7 +3,6 @@ View for displaying news.
 """
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
 from ..models import News
 
 
@@ -14,8 +13,9 @@ def show_news(request, news_id=None):
     """
     # pylint: disable=E1101
     if news_id is None:
-        news_list = News.objects.filter(~Q(menu_item=True)).order_by("-pub_date")[0:5]
+        news_list = (News.objects.filter(groups__in=request.user.groups.all())
+                     .order_by("-pub_date")[0:5])
     else:
-        news_list = News.objects.filter(id=news_id)
+        news_list = News.objects.filter(id=news_id,groups__in=request.user.groups.all())
     context = {'news_list': news_list}
     return render(request, 'news.html', context)
