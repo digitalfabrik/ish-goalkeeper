@@ -1,4 +1,5 @@
 {% load static %}
+{% load has_group %}
 {% if back_link %}
     <div style="margin-top: 10px;">
       <a class="div-link" href="{{ back_link }}">
@@ -32,6 +33,15 @@
             </div>
           </div>
           <ul>
+{% if request.user|has_group:"Lehrkräfte" %}
+            <li><a href="/gui/news">Neuigkeiten</a></li>
+            <li><a href="/gui/courses">Übungen</a></li>
+            <li><a href="/gui/contact">Kontakt</a></li>
+            <li><a href="{{ request.documentation_url }}">Wissen & Dokumente</a></li>
+            <li><a href="/gui/profile">Profil-Einstellungen</a></li>
+            <li><a href="/gui/privacy">Datenschutz</a></li>
+            <li><a href="/gui/logout">Abmelden</a></li>
+{% else %}
             <li><a href="/gui/news">Neuigkeiten</a></li>
             <li><a href="/gui/courses">Meine Kurse</a></li>
             <li><a href="/gui/contact">Kontakt</a></li>
@@ -43,6 +53,7 @@
             <li><a href="/gui/profile">Profil-Einstellungen</a></li>
             <li><a href="/gui/privacy">Datenschutz</a></li>
             <li><a href="/gui/logout">Abmelden</a></li>
+{% endif %}
           </ul>
         </div>
       </div>

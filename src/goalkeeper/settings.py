@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'gui.middleware.docurl.DocUrlMiddleware',
 ]
 
 ROOT_URLCONF = 'goalkeeper.urls'
@@ -147,3 +148,5 @@ THUMBNAIL_PROCESSORS = (
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+DOCUMENTATION_URL = "https://doc.example.com"
