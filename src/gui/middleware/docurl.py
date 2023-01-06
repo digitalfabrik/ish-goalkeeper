@@ -12,5 +12,6 @@ class DocUrlMiddleware:  # pylint: disable=R0903
 
     def __call__(self, request):
         request.documentation_url = settings.DOCUMENTATION_URL
+        request.documentation_alt_url = settings.DOCUMENTATION_ALT_URL
         response = self.get_response(request)
         return response

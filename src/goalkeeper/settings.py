@@ -151,3 +151,4 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 DOCUMENTATION_URL = "https://doc.example.com"
+DOCUMENTATION_ALT_URL = "https://docs2.example.com"
