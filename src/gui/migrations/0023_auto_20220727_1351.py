@@ -17,11 +17,11 @@ class Migration(migrations.Migration):
             name='HourlyRate',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('rate', models.IntegerField(verbose_name='Stundensatz')),
+                ('rate', models.IntegerField(verbose_name='Vergütung')),
             ],
             options={
-                'verbose_name': 'Stundensatz',
-                'verbose_name_plural': 'Stundensätze',
+                'verbose_name': 'Vergütung',
+                'verbose_name_plural': 'Vergütungen',
             },
         ),
         migrations.AddField(

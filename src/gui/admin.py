@@ -30,7 +30,7 @@ def timesheet_to_csv(queryset, writer):
     """
     Convert timesheet data to CSV
     """
-    writer.writerow(["Kursleiter*in", "Kurs", "Datum", "Stunden", "Stundensatz"])
+    writer.writerow(["Kursleiter*in", "Kurs", "Datum", "Stunden", "Vergütung"])
     for row in queryset:
         writer.writerow([row.instructor, row.course, row.date, row.hours, row.rate])
 
