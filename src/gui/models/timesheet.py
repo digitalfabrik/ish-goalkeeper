@@ -12,11 +12,11 @@ class HourlyRate(models.Model):
     """
     The hourly rates that are possible
     """
-    rate = models.IntegerField('Stundensatz', blank=False)
+    rate = models.IntegerField('Vergütung', blank=False)
 
     class Meta:
-        verbose_name = 'Stundensatz'
-        verbose_name_plural = 'Stundensätze'
+        verbose_name = 'Vergütung'
+        verbose_name_plural = 'Vergütungen'
 
     def __str__(self):
         return str(self.rate)
@@ -35,7 +35,7 @@ class TimeSheet(models.Model):
     date = models.DateField('Tag')
     rate = models.ForeignKey(HourlyRate,
                              on_delete=models.CASCADE,
-                             verbose_name="Stundensatz")
+                             verbose_name="Vergütung")
 
     class Meta:
         verbose_name = 'Stundenerfassung'
