@@ -351,3 +351,7 @@ td {
   padding: 3px;
   vertical-align: middle;
 }
+
+.menu-head {
+  display: flex;
+}
