@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-      <h2>Meine Kurse</h2>
+      <h2>Meine Übungen</h2>
 {% if course_list %}
   {% for course in course_list %}
     <a href="/gui/course/{{ course.id }}" class="div-link">
