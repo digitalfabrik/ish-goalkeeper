@@ -1,34 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-      <h2>{{ course.title }}</h2>
-      <div class="content-item bg-white">
-        <a href="/gui/statistics/{{ course.id }}/"><img style="float:right;" src="{% static "heroicons/icon-graph-bar.svg" %}"></a>
-        <h3><img class="icon-inline" src="{% static "heroicons/icon-location.svg" %}"> {{ course.location }}</h3>
-        <h3><img class="icon-inline" src="{% static "heroicons/icon-calendar.svg" %}"> {{ course.dates }}</h3>
-{% for user in user_list %}
-        <h3><img class="icon-inline" src="{% static "heroicons/icon-user.svg" %}"> {{ user.first_name }}</h3>
-{% endfor %} 
-        <h3><img class="icon-inline" src="{% static "heroicons/icon-clock.svg" %}"> {{ course.timeframe }}</h3>
-      </div>
-      <h2>Lerneinheiten</h2>
-{% if lesson_list %}
-  {% for lesson in lesson_list %}
-    <a href="/gui/course/{{ course.id }}/{{ lesson.id }}/" class="div-link">
-      <div class="content-item centered {% if lesson.needs_feedback == 1 %}bg-ish{% else %}bg-grey{% endif %}">
-        <h3>{{ lesson.title }}
-          {% if lesson.needs_feedback == 2 %}
-          <img style="height: 1em;" src="{% static "heroicons/icon-check-circle.svg" %}">
-          {% endif %}
-          {% if lesson.mandatory %}
-          <img class="icon-inline" src="{% static "heroicons/icon-exclamation.svg" %}">
-          {% endif %}
-        </h3>
-      </div>
-    </a>
-  {% endfor %}
+<h2>{{ course.title }}</h2>
+<div class="content-item bg-white">
+  <a href="/gui/statistics/{{ course.id }}/"><img style="float:right;" src="{% static "heroicons/icon-graph-bar.svg" %}"></a>
+  <h3><img class="icon-inline" src="{% static "heroicons/icon-location.svg" %}"> {{ course.location }}</h3>
+  <h3><img class="icon-inline" src="{% static "heroicons/icon-calendar.svg" %}"> {{ course.dates }}</h3>
+</div>
+<h2>Themen</h2>
+  {% if lesson_list %}
+    {% for lesson in lesson_list %}
+      <a href="/gui/course/{{ course.id }}/{{ lesson.id }}/" class="div-link">
+        <div class="content-item centered {% if lesson.needs_feedback == 1 %}bg-ish{% else %}bg-grey{% endif %}">
+          <h3>{{ lesson.title }}
+            {% if lesson.needs_feedback == 2 %}
+              <img style="height: 1em;" src="{% static "heroicons/icon-check-circle.svg" %}">
+            {% endif %}
+            {% if lesson.mandatory %}
+              <img class="icon-inline" src="{% static "heroicons/icon-exclamation.svg" %}">
+            {% endif %}
+          </h3>
+        </div>
+      </a>
+    {% endfor %}
     <div class="content-item" style="background: #fff;">
       <img class="icon-inline" src="{% static "heroicons/icon-exclamation.svg" %}"> Diese Einheiten sind verpflichtend.
     </div>
-{% endif %}
+  {% endif %}
 {% endblock %}
