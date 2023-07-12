@@ -1,39 +1,33 @@
 {% load static %}
 {% load has_group %}
-{% if back_link %}
-    <div style="margin-top: 10px;">
-      <a class="div-link" href="{{ back_link }}">
-        <img class="chevron-back" src="{% static "heroicons/icon-cheveron-left.svg" %}">
-      </a>
-    </div>
-{% else %}
-    <nav role="navigation">
-      <div id="menu-container">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-        <div id="menu">
-          <div class="ish-bg full-menu-placeholder"></div>
-          <div class="centered ish-bg full-menu">
-            <img class="centered portrait" src="{{ main_logo }}">
+<div class="menu-head">
+  <nav role="navigation">
+    <div id="menu-container">
+      <input type="checkbox" />
+      <span></span>
+      <span></span>
+      <span></span>
+      <div id="menu">
+        <div class="ish-bg full-menu-placeholder"></div>
+        <div class="centered ish-bg full-menu">
+          <img class="centered portrait" src="{{ main_logo }}">
+        </div>
+        <div class="centered ish-bg full-menu">
+          <h3>Coach {{ user_info.name }}</h3>
+          <img style="height: 1em;" src="{% static "heroicons/icon-location.svg" %}"> {{ user_info.location }}
+        </div>
+        <div class="centered ish-bg full-menu">
+          <div class="centered half-menu">
+            dabei seit
+            <h3>{{ request.user.date_joined.date }}</h3>
           </div>
-          <div class="centered ish-bg full-menu">
-            <h3>Coach {{ user_info.name }}</h3>
-            <img style="height: 1em;" src="{% static "heroicons/icon-location.svg" %}"> {{ user_info.location }}
+          <div class="centered half-menu">
+            Kurse insgesamt
+            <h3>{{ user_info.courses }}</h3>
           </div>
-          <div class="centered ish-bg full-menu">
-            <div class="centered half-menu">
-              dabei seit
-              <h3>{{ request.user.date_joined.date }}</h3>
-            </div>
-            <div class="centered half-menu">
-              Kurse insgesamt
-              <h3>{{ user_info.courses }}</h3>
-            </div>
-          </div>
-          <ul>
-{% if request.user|has_group:"Lehrkräfte" %}
+        </div>
+        <ul>
+          {% if request.user|has_group:"Lehrkräfte" %}
             <li><a href="/gui/news">Neuigkeiten</a></li>
             <li><a href="/gui/courses">Übungen</a></li>
             <li><a href="/gui/contact">Kontakt</a></li>
@@ -41,22 +35,29 @@
             <li><a href="/gui/profile">Profil-Einstellungen</a></li>
             <li><a href="/gui/privacy">Datenschutz</a></li>
             <li><a href="/gui/logout">Abmelden</a></li>
-{% else %}
+          {% else %}
             <li><a href="/gui/news">Neuigkeiten</a></li>
             <li><a href="/gui/courses">Meine Übungen</a></li>
             <li><a href="{{ request.documentation_alt_url }}">Wissen & Dokumente</a></li>
             <li><a href="/gui/contact">Kontakt</a></li>
             <li><a href="/gui/timesheet">Stundenerfassung</a></li>
             {% for item in mnews %}
-            <li><a href="/gui/mnews/{{ item.id }}">{{ item.title }}</a></li>
+              <li><a href="/gui/mnews/{{ item.id }}">{{ item.title }}</a></li>
             {% endfor %}
-            <li><a href="/gui/knowledge/">Wissen</a></li>
-            <li><a href="/gui/profile">Profil-Einstellungen</a></li>
-            <li><a href="/gui/privacy">Datenschutz</a></li>
-            <li><a href="/gui/logout">Abmelden</a></li>
-{% endif %}
-          </ul>
-        </div>
+              <li><a href="/gui/knowledge/">Wissen</a></li>
+              <li><a href="/gui/profile">Profil-Einstellungen</a></li>
+              <li><a href="/gui/privacy">Datenschutz</a></li>
+              <li><a href="/gui/logout">Abmelden</a></li>
+          {% endif %}
+        </ul>
       </div>
-    </nav>
-{% endif %}
+    </div>
+  </nav>
+  {% if back_link %}
+    <div style="margin-top: 10px;">
+      <a class="div-link" href="{{ back_link }}">
+        <img class="chevron-back" src="{% static "heroicons/icon-cheveron-left.svg" %}">
+      </a>
+    </div>
+  {% endif %}
+</div>
