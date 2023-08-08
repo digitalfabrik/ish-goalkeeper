@@ -186,7 +186,7 @@ hr {
 #menu
 {
   position: absolute;
-  width: 80%;
+  width: 350px;
   opacity: 0;
   transition: opacity 0.3s;
   top: 0;
