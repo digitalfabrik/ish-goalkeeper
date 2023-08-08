@@ -30,22 +30,10 @@ def feedback_form(request, course_id=None, lesson_id=None):
                             lesson=lesson)
         feedback.save()
     if 'save' in request.POST:
-        feedback.male = request.POST['male']
-        feedback.female = request.POST['female']
-        feedback.other = request.POST['other']
         feedback.positive = request.POST['positive']
         feedback.negative = request.POST['negative']
         feedback.comment = request.POST['comment']
         feedback.quote_child = request.POST['quote_child']
-        feedback.start_blue = request.POST['start_blue']
-        feedback.start_yellow = request.POST['start_yellow']
-        feedback.start_green = request.POST['start_green']
-        feedback.start_red = request.POST['start_red']
-        feedback.end_blue = request.POST['end_blue']
-        feedback.end_yellow = request.POST['end_yellow']
-        feedback.end_green = request.POST['end_green']
-        feedback.end_red = request.POST['end_red']
-        feedback.childprotection = request.POST['childprotection']
         feedback.save()
         saved = True
 
