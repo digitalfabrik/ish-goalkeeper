@@ -18,7 +18,7 @@ body {
   border-bottom: 1px solid #ed7000;
 }
 
-.feedback-form input {
+.feedback-form input[type=number] {
   border: 1px solid;
   border-radius: 5px;
   font-size: 2em;
